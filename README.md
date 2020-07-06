@@ -10,4 +10,4 @@ MISSING THINGS:
 
 REMINDER:
 1) spostare funzioni ausiliari su app.js
-2) ??
+2) ???
