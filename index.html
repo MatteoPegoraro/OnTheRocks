@@ -1,65 +1,143 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>OnTheRocks</title>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.2/axios.js"
+      integrity="sha512-VGxuOMLdTe8EmBucQ5vYNoYDTGijqUsStF6eM7P3vA/cM1pqOwSBv/uxw94PhhJJn795NlOeKBkECQZ1gIzp6A=="
+      crossorigin="anonymous"
+    ></script>
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+    />
+  </head>
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
-
-</head>
-
-<body style="background-color: #25222B;">
-    <div id="main" class="container d-flex-column d-none">
-        <div id="logo" class="d-flex justify-content-center" style="padding: 2rem;" style="background-color: seashell;">
-            <img src="https://png2.kisspng.com/sh/506a678ae4c3e752637b2b16a55ed623/L0KzQYm3VsA3N6p9R91yc4Pzfri0lPhmNaRqeARudD3ydn70jB5sbaoygeV1YX7nPcT3hfNqaZ0yfdZydHnyfn70jB5sbV54fdV7ZYSwf7e0jf9vc5ZARdt8bHHxdH76kPVkcZJxRddtaYTsf7A0VfIyP2k6UNMAOXO6SYa1UsQ0PmM6T6s6NUK7QoeBUccxO2c8UJD5bne=/kisspng-the-secret-of-monkey-island-special-edition-monke-secret-of-monkey-island-special-edition-5b17858a59c795.2436257915282681703678.png"
-                alt="">
-            <h1 id="title" class="title" style="color:seashell; padding: 5rem;"> Questo è il nostro progetto felice</h1>
-        </div>
-        <div id="form" class="d-flex justify-content-center" style="background-color: seashell; padding: 2rem;">
-            <form>
-                <label for="cocktail"></label>
-                <input id=name name=name type=text placeholder="cocktail" autofocus>
-                <button type=submit>GET!</button>
-            </form>
-        </div>
-        <div id="random-button" class="d-flex justify-content-center" style="padding: 2rem;">
-            <button>Random</button>
-        </div>
-    </div>
-    <div id="header-logo" class="container d-flex-column">
-        <div id="logo" class="d-flex justify-content-center" style="padding: 2rem;" style="background-color: seashell;">
-            <h1 id="title" class="title" style="color:seashell; padding: 5rem;"> Questo è il nostro progetto felice</h1>
-        </div>
-        <div class="container d-flex-row">
-        <div id="cocktail-div" class="d-flex justify-content-center" style="background-color: seashell; padding: 2rem;">
-            <div id="image-cocktail" style="padding: 3rem">
-                <div style="max-width: 300px;">
-                <img style="max-width: 200px;" src="https://yt3.ggpht.com/-GvSh79CS6-k/AAAAAAAAAAI/AAAAAAAAAAA/tUYENAqlnYo/s900-c-k-no-mo-rj-c0xffffff/photo.jpg" alt="">
-                </div>
-                <h3>Nome cocktail</h3>
-            </div>
-            <div class="d-flex-column justify-content-right">
-                <h4> Descrizione cocktail </h4>
-                <p> Questo cocktail è buonissimo beviamone tanti sabato all'aperitivo</p>
-            </div>
-        </div>
-            <div id="ingredients-carousel" class="container d-flex-row">
-                <div class="d-flex justify-content-center carousel-overflow">
-
-                </div>
-            </div>
-        </div>
-        <div id="rating">
-        </div>
-    </div>
-    <div id="random-button" class="d-flex justify-content-center" style="padding: 2rem;">
+  <body style="background-color: #25222b;">
+    <div id="home-page" class="container d-flex-column d-none">
+      <div
+        id="logo"
+        class="d-flex justify-content-center"
+        style="padding: 2rem;"
+        style="background-color: seashell;"
+      >
+        <img
+          src="https://png2.kisspng.com/sh/506a678ae4c3e752637b2b16a55ed623/L0KzQYm3VsA3N6p9R91yc4Pzfri0lPhmNaRqeARudD3ydn70jB5sbaoygeV1YX7nPcT3hfNqaZ0yfdZydHnyfn70jB5sbV54fdV7ZYSwf7e0jf9vc5ZARdt8bHHxdH76kPVkcZJxRddtaYTsf7A0VfIyP2k6UNMAOXO6SYa1UsQ0PmM6T6s6NUK7QoeBUccxO2c8UJD5bne=/kisspng-the-secret-of-monkey-island-special-edition-monke-secret-of-monkey-island-special-edition-5b17858a59c795.2436257915282681703678.png"
+          alt=""
+        />
+        <h1 id="title" class="title" style="color: seashell; padding: 5rem;">
+          Questo è il nostro progetto felice
+        </h1>
+      </div>
+      <div
+        id="form"
+        class="d-flex justify-content-center"
+        style="background-color: seashell; padding: 2rem;"
+      >
+        <form>
+          <label for="cocktail"></label>
+          <input
+            id="name"
+            name="name"
+            type="text"
+            placeholder="cocktail"
+            autofocus
+          />
+          <button type="submit">GET!</button>
+        </form>
+      </div>
+      <div
+        id="random-button"
+        class="d-flex justify-content-center"
+        style="padding: 2rem;"
+      >
         <button>Random</button>
+      </div>
     </div>
-    </div>
-    <footer>
-        baubau
-    </footer>
-</body>
 
+    <div id="cocktail-page" class="container d-flex-column">
+      <div
+        id="logo"
+        class="d-flex justify-content-center"
+        style="padding: 2rem;"
+        style="background-color: seashell;"
+      >
+        <h1 id="title" class="title" style="color: seashell; padding: 5rem;">
+          Questo è il nostro progetto felice
+        </h1>
+      </div>
+      <div class="container d-flex-row">
+        <div
+          id="cocktail-div"
+          class="d-flex justify-content-center"
+          style="background-color: seashell; padding: 2rem;"
+        >
+          <div style="padding: 3rem;">
+            <div style="max-width: 300px;">
+              <img
+                id="image-cocktail"
+                style="max-width: 200px;"
+                src="https://yt3.ggpht.com/-GvSh79CS6-k/AAAAAAAAAAI/AAAAAAAAAAA/tUYENAqlnYo/s900-c-k-no-mo-rj-c0xffffff/photo.jpg"
+                alt=""
+              />
+            </div>
+          </div>
+          <div class="d-flex-column justify-content-right">
+            <h3 id="name-cocktail">Nome cocktail</h3>
+            <h4>Descrizione cocktail</h4>
+            <p id="desc-cocktail">
+              Questo cocktail è buonissimo beviamone tanti sabato all'aperitivo
+            </p>
+          </div>
+          <div id="ingredients-carousel" class="container d-flex-row"></div>
+        </div>
+      </div>
+      <div id="rating"></div>
+    </div>
+    -->
+    <div
+      id="random-button"
+      class="d-flex justify-content-center"
+      style="padding: 2rem;"
+    >
+      <button onclick="showRandom()">Random</button>
+    </div>
+
+    <script>
+      // inizializzazione pagina iniziale (cocktail random) tramite axios e funzione utilizzata attraverso il bottone RANDOM
+      function showCocktail() {
+        axios.get(`https://www.thecocktaildb.com/api/json/v1/1/random.php`)
+        .then((response) => {
+          let drink = response.data.drinks[0];
+
+          // riempimento dati dell'html
+          document.getElementById("image-cocktail").src = drink.strDrinkThumb;
+          document.getElementById("name-cocktail").innerText = drink.strDrink;
+          document.getElementById("desc-cocktail").innerText =
+            drink.strInstructions;
+          document.getElementById("desc-cocktail").innerText =
+            drink.strInstructions;
+
+          // lista ingredienti gestita "pulendo" il json (grazie Matteo e Ale <3)
+          const arrIngr = [];
+          for (const test in drink) {
+            if (test.includes("strIngredient") && drink[test] !== null) {
+              arrIngr.push(drink[test]);
+            }
+          }
+
+          const ingrList = document.getElementById("ingredients-carousel");
+          let ingrs = "";
+          arrIngr.forEach((ingredient) => {
+            listaIngr += `<li>${ingredient}</li>`;
+          });
+          ingrList.innerHTML = listaIngr;
+        });
+      }
+      // caricamento della pagina al primo arrivo nel sito
+      showCocktail();
+    </script>
+  </body>
 </html>
