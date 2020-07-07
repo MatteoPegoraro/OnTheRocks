@@ -72,7 +72,7 @@
     <div id="home-page" class="container d-flex-column">
       <div
         id="logo"
-        class="container d-flex justify-content-center align-items-center"
+        class="container d-flex  justify-content-center align-items-center"
         style="padding: 2rem;"
       >
         <img src="./Untitled-1-14.png" alt="" />
@@ -97,14 +97,14 @@
         <form>
           <div class="text-center pt-4">
             <label for="cocktail"></label>
-            <input
+            <input style="width: 300px;"
               id="name"
               name="name"
               type="text"
               placeholder="cocktail"
               autofocus
             />
-            <button type="submit">GET!</button>
+            <button type="button" class="btn btn-warning">search</button>
           </div>
         </form>
       </div>
@@ -113,12 +113,13 @@
         class="d-flex justify-content-center"
         style="padding: 2rem;"
       >
+      <img src="./Cocktail_arrow.png" alt="" style="max-width:110px; margin-left: -70px;">
         <a href="/cocktails">
           <button class="btn btn-disabled shake">
             <img
               src="./Cocktail_layout.png"
               alt=""
-              style="width: 100px; height: 100px;"
+              style="width: 100px; height: 100px; margin-left: -30px"
             />
           </button>
         </a>
