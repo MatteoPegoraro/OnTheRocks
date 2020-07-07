@@ -8,7 +8,11 @@
       rel="stylesheet"
       href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
     />
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.2/axios.js"
+      integrity="sha512-VGxuOMLdTe8EmBucQ5vYNoYDTGijqUsStF6eM7P3vA/cM1pqOwSBv/uxw94PhhJJn795NlOeKBkECQZ1gIzp6A=="
+      crossorigin="anonymous"
+    ></script>
     <script src="./OnTheRocks/app.js"></script>
     <style>
       .btn:focus {
@@ -74,7 +78,7 @@
     <div id="home-page" class="container d-flex-column">
       <div
         id="logo"
-        class="container d-flex  justify-content-center align-items-center"
+        class="container d-flex justify-content-center align-items-center"
         style="padding: 2rem;"
       >
         <img src="./Untitled-1-14.png" alt="" />
@@ -99,14 +103,15 @@
         <form>
           <div class="text-center pt-4">
             <label for="cocktail"></label>
-            <input style="width: 300px;"
-              id="name"
-              name="name"
+            <input
+              style="width: 300px;"
+              id="form-cocktail"
+              name="cocktail"
               type="text"
-              placeholder="cocktail"
+              placeholder="search a cocktail"
               autofocus
             />
-            <button type="button" class="btn btn-warning">search</button>
+            <button id="form-button" type="button" class="btn btn-warning">search</button>
           </div>
         </form>
       </div>
@@ -115,17 +120,99 @@
         class="d-flex justify-content-center"
         style="padding: 2rem;"
       >
-      <img src="./Cocktail_arrow.png" alt="" style="max-width:110px; margin-left: -70px;">
+        <img
+          src="./Cocktail_arrow.png"
+          alt=""
+          style="max-width: 110px; margin-left: -70px;"
+        />
         <a href="/cocktails">
           <button class="btn btn-disabled shake">
             <img
               src="./Cocktail_layout.png"
               alt=""
-              style="width: 100px; height: 100px; margin-left: -30px"
+              style="width: 100px; height: 100px; margin-left: -30px;"
             />
           </button>
         </a>
       </div>
+
+      <div id="cocktail-page" class="container d-flex-column">
+      <div
+        id="logo"
+        class="container d-flex justify-content-center align-items-center"
+        style="padding: 0.5rem;"
+      >
+        <a href="/home"
+          ><img src="./Untitled-1-14.png" alt="" style="max-width: 150px;"
+        /></a>
+        <h5 id="title" class="title" style="color: seashell; padding: 3rem;">
+          <i>Testing</i>
+        </h5>
+      </div>
+      <div class="container d-flex-row">
+        <div
+          id="cocktail-div"
+          class="d-flex justify-content-center"
+          style="background-color: rgba(245, 212, 212, 0.7); padding: 0.5rem;"
+        >
+          <div style="padding: 3rem;">
+            <div style="max-width: 300px;">
+              <img
+                id="image-cocktail"
+                style="max-width: 200px;"
+                src=""
+                alt=""
+              />
+            </div>
+          </div>
+          <div class="d-flex-column justify-content-right">
+            <h3 id="name-cocktail">Nome cocktail</h3>
+            <h4>Descrizione cocktail</h4>
+            <p id="desc-cocktail" style="overflow-y: auto;">
+              Placeholder
+            </p>
+          </div>
+          <div id="ingredients-carousel" class="container d-flex-row"></div>
+        </div>
+      </div>
+      <div id="rating"></div>
+      <div
+      id="random-button"
+      class="d-flex justify-content-center"
+      style="padding: 2rem;"
+    >
+      <button class="btn btn-disabled shake" onclick="showCocktail()">
+        <img
+          src="./Cocktail_layout.png"
+          alt=""
+          style="width: 100px; height: 100px; margin-right: -20px;"
+        />
+      </button>
+      <img
+        src="./Cocktail_layout_1.png"
+        alt=""
+        style="max-width: 110px; margin-right: -70px;"
+      />
     </div>
+    </div>
+
+    
+    </div>
+    <script>
+      // utilizzo del form per acquisire un cocktail in input
+    let form_input = document.getElementById("form-cocktail");
+    let button_input = document.getElementById("form-button");
+    button_input.addEventListener("click", () => {
+      axios
+        .get(
+          "https://www.thecocktaildb.com/api/json/v1/1/search.php?s=" +
+          form_input.value
+        )
+        .then((response) => {
+          console.log(form_input.value)
+        
+      });
+    })
+      </script>
   </body>
 </html>
