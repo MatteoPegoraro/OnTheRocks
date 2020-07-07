@@ -66,7 +66,9 @@
       .shake {
         display: inline-block;
       }
+      
     </style>
+    <link href="https://fonts.googleapis.com/css2?family=Luckiest+Guy&family=Merienda+One&display=swap" rel="stylesheet">
   </head>
 
   <body
@@ -113,20 +115,22 @@
                 <div style="max-width: 300px;">
                     <img
                         id="image-cocktail"
-                        style="max-width: 200px; border-radius: 50%;"
+                        style="max-width: 250px; border-radius: 50%;"
                         src="https://yt3.ggpht.com/-GvSh79CS6-k/AAAAAAAAAAI/AAAAAAAAAAA/tUYENAqlnYo/s900-c-k-no-mo-rj-c0xffffff/photo.jpg"
                         alt=""
                     />
                 </div>
                 
                 <div class="d-flex-column justify-content-center px-4" style="flex-grow: 2">
-                  <h3 id="name-cocktail" class="text-start">
+                  <h2 id="name-cocktail" class="text-start" style="font-family: 'Luckiest Guy', cursive; background: linear-gradient(90deg, rgba(212,47,75,1) 0%, rgba(81,0,85,1) 100%); -webkit-background-clip: text;
+                  -webkit-text-fill-color: transparent;">
                     Nome cocktail
-                </h3>
+                </h2>
                     <div class="d-flex">
                         <p
                             id="desc-cocktail"
-                            style="overscroll-behavior-y: content;"
+                            style="overscroll-behavior-y: content; font-family: 'Merienda One', cursive; color: white;
+                            "
                         >
                             Placeholder
                         </p>
@@ -134,10 +138,16 @@
                     </div>
                     
                 </div>
+               <div class="d-flex-column pt-2">
+                 <h6 class="text-light" style="font-family: 'Luckiest Guy', cursive; background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(9,9,121,1) 35%, rgba(8,91,172,1) 100%); -webkit-background-clip: text;
+                 -webkit-text-fill-color: transparent;">Ingredients</h6>
                 <div 
                 id="ingredients-carousel"
-                class=" d-flex-row"
+                class=" d-flex-row pt-2"
+                style="font-family: 'Merienda One', cursive; color: white;
+                "
             ></div>
+               </div>
             </div>
         </div>
     </div>
