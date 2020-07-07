@@ -1,15 +1,18 @@
+// Funzioni ausiliari
+
+
+
+// ROUTING PAGES
 const express = require("express");
 const axios = require("axios");
 
 const app = express();
 
-
 app.use('/',express.static("public"));
 
-
 // redirect
-app.get('/', (req, res) => {
-  res.redirect('/home');
+app.get("/", (req, res) => {
+  res.redirect("/home");
 });
 // homepage
 app.get("/home", (req, res) => {
@@ -17,13 +20,14 @@ app.get("/home", (req, res) => {
 });
 
 // cocktails page
-app.get('/cocktails',(req, res) => {
-  res.sendFile(__dirname, "/public/cocktail.html");
-})
+app.get("/cocktails", (req, res) => {
+  res.sendFile(__dirname +  "/public/cocktail.html");
+});
 
 // pagina non trovata
 app.get("*", (req, res) => {
-  res.sendFile(__dirname, "/public/404.html");
+  res.sendFile(__dirname + "/public/404.html");
 });
 
 app.listen(3000, () => console.log("listening -> port 3000"));
+
