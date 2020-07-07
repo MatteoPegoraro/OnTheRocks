@@ -126,7 +126,7 @@
       class="d-flex justify-content-center"
       style="padding: 2rem;"
     >
-      <button class="btn btn-disabled shake" onclick="showCocktail()">
+      <button class="btn btn-disabled shake" onclick="showRandom()">
         <img
           src="./Cocktail_layout.png"
           alt=""
@@ -141,7 +141,7 @@
     </div>
     <script>
       // inizializzazione pagina iniziale (cocktail random) tramite axios e funzione utilizzata attraverso il bottone RANDOM
-      function showCocktail() {
+      function showRandom() {
         axios
           .get(`https://www.thecocktaildb.com/api/json/v1/1/random.php`)
           .then((response) => {
