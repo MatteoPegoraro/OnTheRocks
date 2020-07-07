@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>OnTheRocks!</title>
+        <link
+            rel="stylesheet"
+            href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+        />
+    </head>
+    <body
+        style="
+            background: rgb(8, 0, 85);
+            background: radial-gradient(
+                circle,
+                rgba(8, 0, 85, 1) 0%,
+                rgba(60, 0, 85, 1) 100%
+            );
+        "
+    >
+        <div id="home-page" class="container d-flex-column">
+            <div
+                id="logo"
+                class="container d-flex justify-content-center align-items-center"
+                style="padding: 2rem;"
+            >
+                <img src="./Untitled-1-14.png" alt=""> 
+                <h5
+                    id="title"
+                    class="title"
+                    style="color: seashell; padding: 3rem;"
+                >
+                <i>By the time a bartender knows what drink a man will have before he orders, there is little else about him worth knowing.</i> 
+                </h5>
+            </div>
+            <div
+                id="form"
+                class="d-flex-column justify-content-center rounded p-4 mx-5"
+                style="background-color: rgba(245, 212, 212, 0.4);"
+            >
+               <h6 class="text-center ">
+                 Lorem ipsum dolor sit amet consectetur adipisicing elit. Adipisci animi in vitae esse officia, accusamus quam, perferendis reiciendis earum debitis blanditiis, provident est fugit obcaecati odit illum suscipit quibusdam assumenda.
+               </h6>
+                <form>
+                  <div class="text-center pt-4">
+                    <label for="cocktail"></label>
+                    <input
+                        id="name"
+                        name="name"
+                        type="text"
+                        placeholder="cocktail"
+                        autofocus
+                    />
+                    <button type="submit">GET!</button>
+                  </div>
+                </form>
+            </div>
+            <div
+                id="random-button"
+                class="d-flex justify-content-center"
+                style="padding: 2rem;"
+            >
+            <button class="btn btn-disabled" onclick="showCocktail()"><img src="./Cocktail_layout.png" alt="" style="width: 100px; height: 100px"></button>
+            </div>
+        </div>
+    </body>
+</html>
