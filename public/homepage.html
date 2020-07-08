@@ -111,7 +111,9 @@
               placeholder="search a cocktail"
               autofocus
             />
-            <button id="form-button" type="button" class="btn btn-warning">search</button>
+            <button id="form-button" type="button" class="btn btn-warning">
+              search
+            </button>
           </div>
         </form>
       </div>
@@ -135,8 +137,6 @@
           </button>
         </a>
       </div>
-
-    
     </div>
     <script>
       let quotes = [];
@@ -168,27 +168,28 @@
         const randomNumber = Math.floor(Math.random() * maxRange);
         const randomQuotes = quotes[randomNumber];
         document.getElementById("quotes").innerText = randomQuotes;
-      };
+      }
 
       window.addEventListener("DOMContentLoaded", (event) => {
-        getRandomQuotes(quotes)
+        getRandomQuotes(quotes);
       });
     </script>
     <script>
       // utilizzo del form per acquisire un cocktail in input
-    let form_input = document.getElementById("form-cocktail");
-    let button_input = document.getElementById("form-button");
-    button_input.addEventListener("click", () => {
-      axios
-        .get(
-          "https://www.thecocktaildb.com/api/json/v1/1/search.php?s=" +
-          form_input.value
-        )
-        .then((response) => {
-          console.log(form_input.value)
-        
+      let form_input = document.getElementById("form-cocktail");
+      let button_input = document.getElementById("form-button");
+
+      form_input.addEventListener("keyup", function (event) {
+        if (event.keyCode === 13) {
+          event.preventDefault();
+          button_input.click();
+        }
       });
-    })
-      </script>
+
+      button_input.addEventListener("click", () => {
+        document.location = `/cocktails?search=${form_input.value}`;
+      });
+      
+    </script>
   </body>
 </html>

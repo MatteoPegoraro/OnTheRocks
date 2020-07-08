@@ -79,91 +79,79 @@
       );
     "
   >
-  <div id="cocktail-page" class="container d-flex-column">
-    <div
+    <div id="cocktail-page" class="container d-flex-column">
+      <div
         id="logo"
         class="container d-flex justify-content-center align-items-center"
         style="padding: 0.5rem;"
-    >
+      >
         <a href="/home"
-            ><img
-                src="./Untitled-1-14.png"
-                alt=""
-                style="max-width: 150px;"
+          ><img src="./Untitled-1-14.png" alt="" style="max-width: 150px;"
         /></a>
-        <h5
-            id="title"
-            class="title"
-            style="color: seashell; padding: 3rem;"
-        >
-            <i>Citazioni</i>
+        <h5 id="title" class="title" style="color: seashell; padding: 3rem;">
+          <i>Citazioni</i>
         </h5>
-    </div>
-    <div class="container d-flex-columm">
+      </div>
+      <div class="container d-flex-columm">
         <div
-            id="cocktail-div"
-            class="d-flex-column justify-content-center rounded"
-            style="
-                background-color: rgba(245, 212, 212, 0.7);
-                padding: 0.5rem;
-            "
+          id="cocktail-div"
+          class="d-flex-column justify-content-center rounded"
+          style="background-color: rgba(245, 212, 212, 0.7); padding: 0.5rem;"
         >
-           
-            <div class="d-flex justify-content-evenly" style="padding: 1.5rem;">
-                <div style="max-width: 300px;">
-                    <img
-                        id="image-cocktail"
-                        style="max-width: 200px; border-radius: 50%;"
-                        src="https://yt3.ggpht.com/-GvSh79CS6-k/AAAAAAAAAAI/AAAAAAAAAAA/tUYENAqlnYo/s900-c-k-no-mo-rj-c0xffffff/photo.jpg"
-                        alt=""
-                    />
-                </div>
-                
-                <div class="d-flex-column justify-content-center px-4" style="flex-grow: 2">
-                  <h3 id="name-cocktail" class="text-start">
-                    Nome cocktail
-                </h3>
-                    <div class="d-flex">
-                        <p
-                            id="desc-cocktail"
-                            style="overscroll-behavior-y: content;"
-                        >
-                            Placeholder
-                        </p>
-                       
-                    </div>
-                    
-                </div>
-                <div 
-                id="ingredients-carousel"
-                class=" d-flex-row"
-            ></div>
+          <div class="d-flex justify-content-evenly" style="padding: 1.5rem;">
+            <div style="max-width: 300px;">
+              <img
+                id="image-cocktail"
+                style="max-width: 200px; border-radius: 50%;"
+                src="https://yt3.ggpht.com/-GvSh79CS6-k/AAAAAAAAAAI/AAAAAAAAAAA/tUYENAqlnYo/s900-c-k-no-mo-rj-c0xffffff/photo.jpg"
+                alt=""
+              />
             </div>
+
+            <div
+              class="d-flex-column justify-content-center px-4"
+              style="flex-grow: 2;"
+            >
+              <h3 id="name-cocktail" class="text-start">
+                Nome cocktail
+              </h3>
+              <div class="d-flex">
+                <p id="desc-cocktail" style="overscroll-behavior-y: content;">
+                  Placeholder
+                </p>
+              </div>
+            </div>
+            <div id="ingredients-carousel" class="d-flex-row"></div>
+          </div>
         </div>
+      </div>
     </div>
-
-   
-</div>
-
 
     <div
       id="random-button"
       class="d-flex justify-content-center"
       style="padding: 2rem;"
     >
-      
-      <button class="btn btn-disabled shake" onclick="showCocktail()">
+      <button class="btn btn-disabled shake" onclick="showRandomCocktail()">
         <img
           src="./Cocktail_layout.png"
           alt=""
-          style="width: 100px; height: 100px; margin-right: -20px"
+          style="width: 100px; height: 100px; margin-right: -20px;"
         />
       </button>
-      <img src="./Cocktail_layout_1.png" alt="" style="max-width:110px; margin-right: -70px;">
+      <img
+        src="./Cocktail_layout_1.png"
+        alt=""
+        style="max-width: 110px; margin-right: -70px;"
+      />
     </div>
     <script>
+      const urlParams = new URLSearchParams(location.search);
+      const drinkName = urlParams.get("search");
+
+      
       // inizializzazione pagina iniziale (cocktail random) tramite axios e funzione utilizzata attraverso il bottone RANDOM
-      function showCocktail() {
+      function showRandomCocktail() {
         axios
           .get(`https://www.thecocktaildb.com/api/json/v1/1/random.php`)
           .then((response) => {
@@ -185,17 +173,82 @@
               }
             }
 
+            // quantità di ingredienti (UA GRAZIE CIRO)
+            const arrIngrMeasure = [];
+            for (const property in drink) {
+              if (property.includes("strMeasure") && drink[property] !== "") {
+                arrIngrMeasure.push(drink[property]);
+              }
+            }
+
+            // stampa lista ingredienti e quantità (se presenti)
             const ingrList = document.getElementById("ingredients-carousel");
-            let listaIngr = "";
-            arrIngr.forEach((ingredient) => {
-              listaIngr += `<li style="list-style:none">${ingredient}</li>`;
+            let listIngr = "";
+            arrIngr.forEach((ingredient, index) => {
+              const currentIngrMeasure = arrIngrMeasure[index];
+              if (currentIngrMeasure !== null) {
+                listIngr += `<li>${ingredient}: ${currentIngrMeasure}</li>`;
+              } else {
+                listIngr += `<li>${ingredient}</li>`;
+              }
             });
-            ingrList.innerHTML = listaIngr;
+            ingrList.innerHTML = listIngr;
           });
       }
+      
+      // inizializzione pagina attraverso il form di homepage.html
+      function getCocktailfromSearch() {
+        axios
+          .get(
+            `https://www.thecocktaildb.com/api/json/v1/1/search.php?s=${drinkName}`
+          )
+          .then((response) => {
+            let drink = response.data.drinks[0];
 
-      // caricamento della pagina al primo arrivo nel sito
-      showCocktail();
-    </script>
+            // riempimento dati dell'html
+            document.getElementById("image-cocktail").src = drink.strDrinkThumb;
+            document.getElementById("name-cocktail").innerText = drink.strDrink;
+            document.getElementById("desc-cocktail").innerText =
+              drink.strInstructions;
+            document.getElementById("desc-cocktail").innerText =
+              drink.strInstructions;
+
+            // lista ingredienti gestita "pulendo" il json (grazie Matteo e Ale <3)
+            const arrIngr = [];
+            for (const test in drink) {
+              if (test.includes("strIngredient") && drink[test] !== null) {
+                arrIngr.push(drink[test]);
+              }
+            }
+
+            // quantità di ingredienti (UA GRAZIE CIRO)
+            const arrIngrMeasure = [];
+            for (const property in drink) {
+              if (property.includes("strMeasure") && drink[property] !== "") {
+                arrIngrMeasure.push(drink[property]);
+              }
+            }
+
+            // stampa lista ingredienti e quantità (se presenti)
+            const ingrList = document.getElementById("ingredients-carousel");
+            let listIngr = "";
+            arrIngr.forEach((ingredient, index) => {
+              const currentIngrMeasure = arrIngrMeasure[index];
+              if (currentIngrMeasure !== null) {
+                listIngr += `<li>${ingredient}: ${currentIngrMeasure}</li>`;
+              } else {
+                listIngr += `<li>${ingredient}</li>`;
+              }
+            });
+            ingrList.innerHTML = listIngr;
+          });
+      }
+      
+      if (drinkName == null){
+        showRandomCocktail();
+      } else {
+        getCocktailfromSearch()
+      }
+   </script>
   </body>
 </html>
