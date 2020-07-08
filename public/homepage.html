@@ -128,12 +128,13 @@
 
 
       </div> -->
-
-            <form action="" class="text-center">
+<div class="d-flex justify-content-center">
+            <form action="/cocktails" class="text-center d-flex" style="width:500px;">
                 <div class="input-group">
                     <input
                         id="form-cocktail"
                         type="text"
+                        name="search"
                         class="form-control"
                         placeholder="search a cocktail"
                         aria-label="Recipient's username"
@@ -143,18 +144,19 @@
                         <button
                             id="form-button"
                             class="btn btn-outline-secondary"
-                            type="button"
+                            type="submit"
                             style="
                                 color: rgba(245, 212, 212, 0.7);
                                 background-color: rgba(60, 0, 85, 1);
                                 border-color: rgba(60, 0, 85, 1);
                             "
                         >
-                            Button
+                            GET IT!
                         </button>
                     </div>
                 </div>
             </form>
+          </div>
 
             <div
                 id="random-button"
@@ -182,6 +184,22 @@
                 </a>
             </div>
         </div>
+        <nav class="navbar fixed-bottom mt-4" style="color:white;" >
+          <div class="container justify-content-center" >
+            <a class="p-4">
+              Home
+            </a>
+            <a class="p-4">
+              About Us
+            </a>
+            <a class="p-4">
+              Contacts
+            </a>
+            <a class="p-4">
+              API
+            </a>
+      </nav>
+      
         <script>
             let quotes = [];
             quotes.push(
@@ -218,21 +236,6 @@
                 getRandomQuotes(quotes);
             });
         </script>
-        <script>
-            // utilizzo del form per acquisire un cocktail in input
-            let form_input = document.getElementById("form-cocktail");
-            let button_input = document.getElementById("form-button");
-
-            form_input.addEventListener("keyup", function (event) {
-                if (event.keyCode === 13) {
-                    event.preventDefault();
-                    button_input.click();
-                }
-            });
-
-            button_input.addEventListener("click", () => {
-                document.location = `/cocktails?search=${form_input.value}`;
-            });
-        </script>
+       
     </body>
 </html>

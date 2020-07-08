@@ -1,270 +1,359 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>OnTheRocks!</title>
-    <script
-      src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.2/axios.js"
-      integrity="sha512-VGxuOMLdTe8EmBucQ5vYNoYDTGijqUsStF6eM7P3vA/cM1pqOwSBv/uxw94PhhJJn795NlOeKBkECQZ1gIzp6A=="
-      crossorigin="anonymous"
-    ></script>
-    <link
-      rel="stylesheet"
-      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
-    />
-    <style>
-      .btn:focus {
-        box-shadow: none !important;
-      }
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>OnTheRocks!</title>
+        <script
+            src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.2/axios.js"
+            integrity="sha512-VGxuOMLdTe8EmBucQ5vYNoYDTGijqUsStF6eM7P3vA/cM1pqOwSBv/uxw94PhhJJn795NlOeKBkECQZ1gIzp6A=="
+            crossorigin="anonymous"
+        ></script>
+        <link
+            rel="stylesheet"
+            href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+        />
+        <style>
+            .btn:focus {
+                box-shadow: none !important;
+            }
 
-      .btn {
-        padding: 0;
-      }
+            .btn {
+                padding: 0;
+            }
 
-      @keyframes shake {
-        0% {
-          transform: translate(2px, 1px) rotate(0deg);
-        }
-        10% {
-          transform: translate(-1px, -2px) rotate(-1deg);
-        }
-        20% {
-          transform: translate(-3px, 0px) rotate(1deg);
-        }
-        30% {
-          transform: translate(0px, 2px) rotate(0deg);
-        }
-        40% {
-          transform: translate(1px, -1px) rotate(1deg);
-        }
-        50% {
-          transform: translate(-1px, 2px) rotate(-1deg);
-        }
-        60% {
-          transform: translate(-3px, 1px) rotate(0deg);
-        }
-        70% {
-          transform: translate(2px, 1px) rotate(-1deg);
-        }
-        80% {
-          transform: translate(-1px, -1px) rotate(1deg);
-        }
-        90% {
-          transform: translate(2px, 2px) rotate(0deg);
-        }
-        100% {
-          transform: translate(1px, -2px) rotate(-1deg);
-        }
-      }
-      .shake:hover {
-        animation-name: shake;
-        animation-duration: 0.5s;
-        transform-origin: 50% 50%;
-        animation-iteration-count: infinite;
-      }
-      .shake {
-        display: inline-block;
-      }
-      body {
-        background-image: linear-gradient(to right top, #141952, #2d1e5d, #442268, #5a2671, #712979);
-        width:100%;
-        min-height:100vh;
-      }
+            @keyframes shake {
+                0% {
+                    transform: translate(2px, 1px) rotate(0deg);
+                }
+                10% {
+                    transform: translate(-1px, -2px) rotate(-1deg);
+                }
+                20% {
+                    transform: translate(-3px, 0px) rotate(1deg);
+                }
+                30% {
+                    transform: translate(0px, 2px) rotate(0deg);
+                }
+                40% {
+                    transform: translate(1px, -1px) rotate(1deg);
+                }
+                50% {
+                    transform: translate(-1px, 2px) rotate(-1deg);
+                }
+                60% {
+                    transform: translate(-3px, 1px) rotate(0deg);
+                }
+                70% {
+                    transform: translate(2px, 1px) rotate(-1deg);
+                }
+                80% {
+                    transform: translate(-1px, -1px) rotate(1deg);
+                }
+                90% {
+                    transform: translate(2px, 2px) rotate(0deg);
+                }
+                100% {
+                    transform: translate(1px, -2px) rotate(-1deg);
+                }
+            }
+            .shake:hover {
+                animation-name: shake;
+                animation-duration: 0.5s;
+                transform-origin: 50% 50%;
+                animation-iteration-count: infinite;
+            }
+            .shake {
+                display: inline-block;
+            }
+            body {
+                background-image: linear-gradient(
+                    to right top,
+                    #141952,
+                    #2d1e5d,
+                    #442268,
+                    #5a2671,
+                    #712979
+                );
+                width: 100%;
+                min-height: 100vh;
+            }
+            #desc-cocktail, #ingredients-carousel {
+                overflow-y: scroll;
+            }
+            #desc-cocktail::-webkit-scrollbar, #ingredients-carousel::-webkit-scrollbar {
+                width: 10px;
+            }
 
-      
-    </style>
-    <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Balsamiq+Sans:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
-  </head>
+            #desc-cocktail::-webkit-scrollbar-thumb, #ingredients-carousel::-webkit-scrollbar-thumb {
+                background: rgb(96, 25, 133);
+                border-radius: 10px;
+            }
+            /* #desc-cocktail */
+        </style>
+        <link
+            href="https://fonts.googleapis.com/css2?family=Pacifico&family=Balsamiq+Sans:ital,wght@0,400;0,700;1,400;1,700&display=swap"
+            rel="stylesheet"
+        />
+    </head>
 
-  <body>
-  <div id="cocktail-page" class="container d-flex-column">
-    <div
-        id="logo"
-        class="container d-flex justify-content-center align-items-center"
-        style="padding: 0.5rem;"
-    >
-        <a href="/home"
-            ><img
-                src="./Untitled-1-14.png"
-                alt=""
-                style="max-width: 150px;"
-        /></a>
-       
-    </div>
-    <div class="container d-flex-columm">
-        <div
-            id="cocktail-div"
-            class="d-flex-column justify-content-center rounded"
-            style="
-                background-color: rgba(245, 212, 212, 0.7);
-                padding: 0.5rem;
-            "
-        >
-           
-            <div class="d-flex justify-content-evenly" style="padding: 1.5rem;">
-                <div style="max-width: 300px;">
-                    <img
-                        id="image-cocktail"
-                        style="max-width: 250px; border-radius: 50%;"
-                        src="https://yt3.ggpht.com/-GvSh79CS6-k/AAAAAAAAAAI/AAAAAAAAAAA/tUYENAqlnYo/s900-c-k-no-mo-rj-c0xffffff/photo.jpg"
+    <body>
+        <div id="cocktail-page" class="container d-flex-column">
+            <div
+                id="logo"
+                class="container d-flex justify-content-center align-items-center"
+                style="padding: 0.5rem;"
+            >
+                <a href="/home"
+                    ><img
+                        src="./Untitled-1-14.png"
                         alt=""
-                    />
-                </div>
-                
-                <div class="d-flex-column justify-content-center px-4" style="flex-grow: 2">
-                  <h2 id="name-cocktail" class="text-start" style="font-family: 'Pacifico', cursive; background: linear-gradient(90deg, rgba(212,47,75,1) 0%, rgba(81,0,85,1) 100%); -webkit-background-clip: text;
-                  -webkit-text-fill-color: transparent; line-height: 2;">
-                    Nome cocktail
-                </h2>
-                    <div class="d-flex">
-                        <p
-                            id="desc-cocktail"
-                            style="overscroll-behavior-y: content; font-family: 'Balsamiq Sans', cursive; font-weight: 400; color: white;"
+                        style="max-width: 150px;"
+                /></a>
+            </div>
+            <div class="container d-flex-columm">
+                <div
+                    id="cocktail-div"
+                    class="d-flex-column justify-content-center rounded"
+                    style="
+                        background-color: rgba(245, 212, 212, 0.7);
+                        padding: 0.5rem;
+                    "
+                >
+                    <div
+                        class="d-flex justify-content-evenly"
+                        style="padding: 1.5rem; height: 350px;"
+                    >
+                        <div style="max-width: 300px; padding-right: 0.4rem;">
+                            <img
+                                id="image-cocktail"
+                                style="max-width: 250px; border-radius: 50%;"
+                                src="https://yt3.ggpht.com/-GvSh79CS6-k/AAAAAAAAAAI/AAAAAAAAAAA/tUYENAqlnYo/s900-c-k-no-mo-rj-c0xffffff/photo.jpg"
+                                alt=""
+                            />
+                        </div>
+
+                        <div
+                            class="d-flex-column justify-content-center px-4"
+                            style="flex-grow: 2; max-width: 800px;"
                         >
-                            Placeholder
-                        </p>
-                       
+                            <h2
+                                id="name-cocktail"
+                                class="text-start"
+                                style="
+                                    font-family: 'Pacifico', cursive;
+                                    background: linear-gradient(
+                                        90deg,
+                                        rgba(212, 47, 75, 1) 0%,
+                                        rgba(81, 0, 85, 1) 100%
+                                    );
+                                    -webkit-background-clip: text;
+                                    -webkit-text-fill-color: transparent;
+                                    line-height: 2;
+                                "
+                            >
+                                Nome cocktail
+                            </h2>
+                            <div
+                                id="desc-cocktail"
+                                class="d-flex"
+                                style="
+                                    max-height: 72%;
+                                    font-family: 'Balsamiq Sans', cursive;
+                                    font-weight: 400;
+                                    color: white;
+                                "
+                            >
+                                Placeholder
+                            </div>
+                        </div>
+                        <div
+                            class="d-flex-column pt-2 border-left"
+                            style="padding-left: 0.05rem;"
+                        >
+                            <h3
+                                class="text-light"
+                                style="
+                                    font-family: 'Pacifico', cursive;
+                                    background: linear-gradient(
+                                        90deg,
+                                        rgba(212, 47, 75, 1) 0%,
+                                        rgba(81, 0, 85, 1) 100%
+                                    );
+                                    -webkit-background-clip: text;
+                                    -webkit-text-fill-color: transparent;
+                                    line-height: 2;
+                                    margin-top: -0.3rem;
+                                    margin-left: 2.4rem;
+                                "
+                            >
+                                Ingredients
+                            </h3>
+                            <div
+                                id="ingredients-carousel"
+                                class="d-flex-row pt-1"
+                                style="
+                                    font-family: 'Balsamiq Sans', cursive;
+                                    font-weight: 400;
+                                    max-height: 72%;
+                                    color: white;
+                                    list-style: none;
+                                    margin-left: 2.5rem;
+                                "
+                            ></div>
+                        </div>
                     </div>
-                    
                 </div>
-               <div class="d-flex-column pt-2">
-                 <h5 class="text-light" style="font-family: 'Pacifico', cursive;  background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(9,9,121,1) 35%, rgba(8,91,172,1) 100%); -webkit-background-clip: text;
-                 -webkit-text-fill-color: transparent; line-height: 2; margin-top: .5rem;">Ingredients</h5>
-                <div 
-                id="ingredients-carousel"
-                class=" d-flex-row pt-2"
-                style="font-family: 'Balsamiq Sans', cursive; font-weight: 400; color: white; list-style: none;
-                "
-            ></div>
-               </div>
             </div>
         </div>
-    </div>
 
-   
-</div>
+        <div
+            id="random-button"
+            class="d-flex justify-content-center"
+            style="padding: 2rem;"
+        >
+            <button
+                class="btn btn-disabled shake"
+                onclick="showRandomCocktail()"
+            >
+                <img
+                    src="./Cocktail_layout.png"
+                    alt=""
+                    style="width: 100px; height: 100px; margin-right: -20px;"
+                />
+            </button>
+            <img
+                src="./Cocktail_arrow_1.png"
+                class="d-none"
+                alt=""
+                style="max-width: 110px; margin-right: -70px;"
+            />
+        </div>
+        <script>
+            const urlParams = new URLSearchParams(location.search);
+            const drinkName = urlParams.get("search");
 
+            // inizializzazione pagina iniziale (cocktail random) tramite axios e funzione utilizzata attraverso il bottone RANDOM
+            function showRandomCocktail() {
+                axios
+                    .get(
+                        `https://www.thecocktaildb.com/api/json/v1/1/random.php`
+                    )
+                    .then((response) => {
+                        let drink = response.data.drinks[0];
 
-    <div
-      id="random-button"
-      class="d-flex justify-content-center"
-      style="padding: 2rem;"
-    >
-      
-      <button class="btn btn-disabled shake" onclick="showCocktail()">
-        <img
-          src="./Cocktail_layout.png"
-          alt=""
-          style="width: 100px; height: 100px; margin-right: -20px"
-        />
-      </button>
-      <img src="./Cocktail_arrow_1.png" class="d-none" alt="" style="max-width:110px; margin-right: -70px;">
-    </div>
-    <script>
-      const urlParams = new URLSearchParams(location.search);
-      const drinkName = urlParams.get("search");
- 
-     
-      // inizializzazione pagina iniziale (cocktail random) tramite axios e funzione utilizzata attraverso il bottone RANDOM
-      function showRandomCocktail() {
-        axios
-          .get(`https://www.thecocktaildb.com/api/json/v1/1/random.php`)
-          .then((response) => {
-            let drink = response.data.drinks[0];
- 
-            // riempimento dati dell'html
-            document.getElementById("image-cocktail").src = drink.strDrinkThumb;
-            document.getElementById("name-cocktail").innerText = drink.strDrink;
-            document.getElementById("desc-cocktail").innerText =
-              drink.strInstructions;
-            document.getElementById("desc-cocktail").innerText =
-              drink.strInstructions;
- 
-            // lista ingredienti gestita "pulendo" il json (grazie Matteo e Ale <3)
-            const arrIngr = [];
-            for (const test in drink) {
-              if (test.includes("strIngredient") && drink[test] !== null) {
-                arrIngr.push(drink[test]);
-              }
+                        // riempimento dati dell'html
+                        document.getElementById("image-cocktail").src =
+                            drink.strDrinkThumb;
+                        document.getElementById("name-cocktail").innerText =
+                            drink.strDrink;
+                        document.getElementById("desc-cocktail").innerText =
+                            drink.strInstructions;
+                        document.getElementById("desc-cocktail").innerText =
+                            drink.strInstructions;
+
+                        // lista ingredienti gestita "pulendo" il json (grazie Matteo e Ale <3)
+                        const arrIngr = [];
+                        for (const test in drink) {
+                            if (
+                                test.includes("strIngredient") &&
+                                drink[test] !== null
+                            ) {
+                                arrIngr.push(drink[test]);
+                            }
+                        }
+
+                        // quantità di ingredienti (UA GRAZIE CIRO)
+                        const arrIngrMeasure = [];
+                        for (const property in drink) {
+                            if (
+                                property.includes("strMeasure") &&
+                                drink[property] !== ""
+                            ) {
+                                arrIngrMeasure.push(drink[property]);
+                            }
+                        }
+
+                        // stampa lista ingredienti e quantità (se presenti)
+                        const ingrList = document.getElementById(
+                            "ingredients-carousel"
+                        );
+                        let listIngr = "";
+                        arrIngr.forEach((ingredient, index) => {
+                            const currentIngrMeasure = arrIngrMeasure[index];
+                            if (currentIngrMeasure !== null) {
+                                listIngr += `<li>${ingredient}: ${currentIngrMeasure}</li>`;
+                            } else {
+                                listIngr += `<li>${ingredient}</li>`;
+                            }
+                        });
+                        ingrList.innerHTML = listIngr;
+                    });
             }
- 
-            // quantità di ingredienti (UA GRAZIE CIRO)
-            const arrIngrMeasure = [];
-            for (const property in drink) {
-              if (property.includes("strMeasure") && drink[property] !== "") {
-                arrIngrMeasure.push(drink[property]);
-              }
+
+            // inizializzione pagina attraverso il form di homepage.html
+            function getCocktailfromSearch() {
+                axios
+                    .get(
+                        `https://www.thecocktaildb.com/api/json/v1/1/search.php?s=${drinkName}`
+                    )
+                    .then((response) => {
+                        let drink = response.data.drinks[0];
+
+                        // riempimento dati dell'html
+                        document.getElementById("image-cocktail").src =
+                            drink.strDrinkThumb;
+                        document.getElementById("name-cocktail").innerText =
+                            drink.strDrink;
+                        document.getElementById("desc-cocktail").innerText =
+                            drink.strInstructions;
+                        document.getElementById("desc-cocktail").innerText =
+                            drink.strInstructions;
+
+                        // lista ingredienti gestita "pulendo" il json (grazie Matteo e Ale <3)
+                        const arrIngr = [];
+                        for (const test in drink) {
+                            if (
+                                test.includes("strIngredient") &&
+                                drink[test] !== null
+                            ) {
+                                arrIngr.push(drink[test]);
+                            }
+                        }
+
+                        // quantità di ingredienti (UA GRAZIE CIRO)
+                        const arrIngrMeasure = [];
+                        for (const property in drink) {
+                            if (
+                                property.includes("strMeasure") &&
+                                drink[property] !== ""
+                            ) {
+                                arrIngrMeasure.push(drink[property]);
+                            }
+                        }
+
+                        // stampa lista ingredienti e quantità (se presenti)
+                        const ingrList = document.getElementById(
+                            "ingredients-carousel"
+                        );
+                        let listIngr = "";
+                        arrIngr.forEach((ingredient, index) => {
+                            const currentIngrMeasure = arrIngrMeasure[index];
+                            if (currentIngrMeasure !== null) {
+                                listIngr += `<li >${ingredient}: ${currentIngrMeasure}</li>`;
+                            } else {
+                                listIngr += `<li >${ingredient}</li>`;
+                            }
+                        });
+                        ingrList.innerHTML = listIngr;
+                    });
             }
- 
-            // stampa lista ingredienti e quantità (se presenti)
-            const ingrList = document.getElementById("ingredients-carousel");
-            let listIngr = "";
-            arrIngr.forEach((ingredient, index) => {
-              const currentIngrMeasure = arrIngrMeasure[index];
-              if (currentIngrMeasure !== null) {
-                listIngr += `<li>${ingredient}: ${currentIngrMeasure}</li>`;
-              } else {
-                listIngr += `<li>${ingredient}</li>`;
-              }
-            });
-            ingrList.innerHTML = listIngr;
-          });
-      }
-     
-      // inizializzione pagina attraverso il form di homepage.html
-      function getCocktailfromSearch() {
-        axios
-          .get(
-            `https://www.thecocktaildb.com/api/json/v1/1/search.php?s=${drinkName}`
-          )
-          .then((response) => {
-            let drink = response.data.drinks[0];
- 
-            // riempimento dati dell'html
-            document.getElementById("image-cocktail").src = drink.strDrinkThumb;
-            document.getElementById("name-cocktail").innerText = drink.strDrink;
-            document.getElementById("desc-cocktail").innerText =
-              drink.strInstructions;
-            document.getElementById("desc-cocktail").innerText =
-              drink.strInstructions;
- 
-            // lista ingredienti gestita "pulendo" il json (grazie Matteo e Ale <3)
-            const arrIngr = [];
-            for (const test in drink) {
-              if (test.includes("strIngredient") && drink[test] !== null) {
-                arrIngr.push(drink[test]);
-              }
+
+            if (drinkName == null) {
+                showRandomCocktail();
+            } else {
+                getCocktailfromSearch();
             }
- 
-            // quantità di ingredienti (UA GRAZIE CIRO)
-            const arrIngrMeasure = [];
-            for (const property in drink) {
-              if (property.includes("strMeasure") && drink[property] !== "") {
-                arrIngrMeasure.push(drink[property]);
-              }
-            }
- 
-            // stampa lista ingredienti e quantità (se presenti)
-            const ingrList = document.getElementById("ingredients-carousel");
-            let listIngr = "";
-            arrIngr.forEach((ingredient, index) => {
-              const currentIngrMeasure = arrIngrMeasure[index];
-              if (currentIngrMeasure !== null) {
-                listIngr += `<li >${ingredient}: ${currentIngrMeasure}</li>`;
-              } else {
-                listIngr += `<li >${ingredient}</li>`;
-              }
-            });
-            ingrList.innerHTML = listIngr;
-          });
-      }
-     
-      if (drinkName == null){
-        showRandomCocktail();
-      } else {
-        getCocktailfromSearch()
-      }
-   </script>
-  </body>
+        </script>
+    </body>
 </html>
