@@ -63,18 +63,14 @@
       .shake {
         display: inline-block;
       }
+      body {
+        background-image: linear-gradient(to right top, #141952, #2d1e5d, #442268, #5a2671, #712979);
+        width:100%;
+        min-height:100vh;
+      }
     </style>
   </head>
-  <body
-    style="
-      background: rgb(8, 0, 85);
-      background: radial-gradient(
-        circle,
-        rgba(8, 0, 85, 1) 0%,
-        rgba(60, 0, 85, 1) 100%
-      );
-    "
-  >
+  <body >
     <div id="home-page" class="container d-flex-column">
       <div
         id="logo"
@@ -120,6 +116,7 @@
 
 
       </div> -->
+
       <form action="" class="text-center"> 
         <div class="input-group ">
           <input id="form-cocktail" type="text" class="form-control" placeholder="search a cocktail" aria-label="Recipient's username" aria-describedby="basic-addon2">
@@ -139,6 +136,7 @@
           src="./Cocktail_arrow.png"
           alt=""
           style="max-width: 110px; margin-left: -70px;"
+          class="d-none"
         />
         <a href="/cocktails">
           <button class="btn btn-disabled shake">
