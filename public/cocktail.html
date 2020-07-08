@@ -134,7 +134,7 @@
                 <div 
                 id="ingredients-carousel"
                 class=" d-flex-row pt-2"
-                style="font-family: 'Balsamiq Sans', cursive; font-weight: 400; color: white;
+                style="font-family: 'Balsamiq Sans', cursive; font-weight: 400; color: white; list-style: none;
                 "
             ></div>
                </div>
@@ -162,13 +162,17 @@
       <img src="./Cocktail_arrow_1.png" class="d-none" alt="" style="max-width:110px; margin-right: -70px;">
     </div>
     <script>
+      const urlParams = new URLSearchParams(location.search);
+      const drinkName = urlParams.get("search");
+ 
+     
       // inizializzazione pagina iniziale (cocktail random) tramite axios e funzione utilizzata attraverso il bottone RANDOM
-      function showCocktail() {
+      function showRandomCocktail() {
         axios
           .get(`https://www.thecocktaildb.com/api/json/v1/1/random.php`)
           .then((response) => {
             let drink = response.data.drinks[0];
-
+ 
             // riempimento dati dell'html
             document.getElementById("image-cocktail").src = drink.strDrinkThumb;
             document.getElementById("name-cocktail").innerText = drink.strDrink;
@@ -176,7 +180,7 @@
               drink.strInstructions;
             document.getElementById("desc-cocktail").innerText =
               drink.strInstructions;
-
+ 
             // lista ingredienti gestita "pulendo" il json (grazie Matteo e Ale <3)
             const arrIngr = [];
             for (const test in drink) {
@@ -184,18 +188,83 @@
                 arrIngr.push(drink[test]);
               }
             }
-
+ 
+            // quantità di ingredienti (UA GRAZIE CIRO)
+            const arrIngrMeasure = [];
+            for (const property in drink) {
+              if (property.includes("strMeasure") && drink[property] !== "") {
+                arrIngrMeasure.push(drink[property]);
+              }
+            }
+ 
+            // stampa lista ingredienti e quantità (se presenti)
             const ingrList = document.getElementById("ingredients-carousel");
-            let listaIngr = "";
-            arrIngr.forEach((ingredient) => {
-              listaIngr += `<li style="list-style:none">${ingredient}</li>`;
+            let listIngr = "";
+            arrIngr.forEach((ingredient, index) => {
+              const currentIngrMeasure = arrIngrMeasure[index];
+              if (currentIngrMeasure !== null) {
+                listIngr += `<li>${ingredient}: ${currentIngrMeasure}</li>`;
+              } else {
+                listIngr += `<li>${ingredient}</li>`;
+              }
             });
-            ingrList.innerHTML = listaIngr;
+            ingrList.innerHTML = listIngr;
           });
       }
-
-      // caricamento della pagina al primo arrivo nel sito
-      showCocktail();
-    </script>
+     
+      // inizializzione pagina attraverso il form di homepage.html
+      function getCocktailfromSearch() {
+        axios
+          .get(
+            `https://www.thecocktaildb.com/api/json/v1/1/search.php?s=${drinkName}`
+          )
+          .then((response) => {
+            let drink = response.data.drinks[0];
+ 
+            // riempimento dati dell'html
+            document.getElementById("image-cocktail").src = drink.strDrinkThumb;
+            document.getElementById("name-cocktail").innerText = drink.strDrink;
+            document.getElementById("desc-cocktail").innerText =
+              drink.strInstructions;
+            document.getElementById("desc-cocktail").innerText =
+              drink.strInstructions;
+ 
+            // lista ingredienti gestita "pulendo" il json (grazie Matteo e Ale <3)
+            const arrIngr = [];
+            for (const test in drink) {
+              if (test.includes("strIngredient") && drink[test] !== null) {
+                arrIngr.push(drink[test]);
+              }
+            }
+ 
+            // quantità di ingredienti (UA GRAZIE CIRO)
+            const arrIngrMeasure = [];
+            for (const property in drink) {
+              if (property.includes("strMeasure") && drink[property] !== "") {
+                arrIngrMeasure.push(drink[property]);
+              }
+            }
+ 
+            // stampa lista ingredienti e quantità (se presenti)
+            const ingrList = document.getElementById("ingredients-carousel");
+            let listIngr = "";
+            arrIngr.forEach((ingredient, index) => {
+              const currentIngrMeasure = arrIngrMeasure[index];
+              if (currentIngrMeasure !== null) {
+                listIngr += `<li >${ingredient}: ${currentIngrMeasure}</li>`;
+              } else {
+                listIngr += `<li >${ingredient}</li>`;
+              }
+            });
+            ingrList.innerHTML = listIngr;
+          });
+      }
+     
+      if (drinkName == null){
+        showRandomCocktail();
+      } else {
+        getCocktailfromSearch()
+      }
+   </script>
   </body>
 </html>

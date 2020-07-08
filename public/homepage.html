@@ -1,91 +1,103 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>OnTheRocks!</title>
-    <link
-      rel="stylesheet"
-      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
-    />
-    <script
-      src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.2/axios.js"
-      integrity="sha512-VGxuOMLdTe8EmBucQ5vYNoYDTGijqUsStF6eM7P3vA/cM1pqOwSBv/uxw94PhhJJn795NlOeKBkECQZ1gIzp6A=="
-      crossorigin="anonymous"
-    ></script>
-    <script src="./OnTheRocks/app.js"></script>
-    <style>
-      .btn:focus {
-        box-shadow: none !important;
-      }
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>OnTheRocks!</title>
+        <link
+            rel="stylesheet"
+            href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+        />
+        <script
+            src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.2/axios.js"
+            integrity="sha512-VGxuOMLdTe8EmBucQ5vYNoYDTGijqUsStF6eM7P3vA/cM1pqOwSBv/uxw94PhhJJn795NlOeKBkECQZ1gIzp6A=="
+            crossorigin="anonymous"
+        ></script>
+        <script src="./OnTheRocks/app.js"></script>
+        <style>
+            .btn:focus {
+                box-shadow: none !important;
+            }
 
-      @keyframes shake {
-        0% {
-          transform: translate(2px, 1px) rotate(0deg);
-        }
-        10% {
-          transform: translate(-1px, -2px) rotate(-1deg);
-        }
-        20% {
-          transform: translate(-3px, 0px) rotate(1deg);
-        }
-        30% {
-          transform: translate(0px, 2px) rotate(0deg);
-        }
-        40% {
-          transform: translate(1px, -1px) rotate(1deg);
-        }
-        50% {
-          transform: translate(-1px, 2px) rotate(-1deg);
-        }
-        60% {
-          transform: translate(-3px, 1px) rotate(0deg);
-        }
-        70% {
-          transform: translate(2px, 1px) rotate(-1deg);
-        }
-        80% {
-          transform: translate(-1px, -1px) rotate(1deg);
-        }
-        90% {
-          transform: translate(2px, 2px) rotate(0deg);
-        }
-        100% {
-          transform: translate(1px, -2px) rotate(-1deg);
-        }
-      }
-      .shake:hover {
-        animation-name: shake;
-        animation-duration: 0.5s;
-        transform-origin: 50% 50%;
-        animation-iteration-count: infinite;
-      }
-      .shake {
-        display: inline-block;
-      }
-      body {
-        background-image: linear-gradient(to right top, #141952, #2d1e5d, #442268, #5a2671, #712979);
-        width:100%;
-        min-height:100vh;
-      }
-    </style>
-  </head>
-  <body >
-    <div id="home-page" class="container d-flex-column">
-      <div
-        id="logo"
-        class="container d-flex justify-content-center align-items-center"
-        style="padding: 2rem;"
-      >
-        <img src="./Untitled-1-14.png" alt="" />
-        <h5 id="title" class="title" style="color: seashell; padding: 3rem;">
-          <i
-            >By the time a bartender knows what drink a man will have before he
-            orders, there is little else about him worth knowing.</i
-          >
-        </h5>
-      </div>
-      <!-- <div
+            @keyframes shake {
+                0% {
+                    transform: translate(2px, 1px) rotate(0deg);
+                }
+                10% {
+                    transform: translate(-1px, -2px) rotate(-1deg);
+                }
+                20% {
+                    transform: translate(-3px, 0px) rotate(1deg);
+                }
+                30% {
+                    transform: translate(0px, 2px) rotate(0deg);
+                }
+                40% {
+                    transform: translate(1px, -1px) rotate(1deg);
+                }
+                50% {
+                    transform: translate(-1px, 2px) rotate(-1deg);
+                }
+                60% {
+                    transform: translate(-3px, 1px) rotate(0deg);
+                }
+                70% {
+                    transform: translate(2px, 1px) rotate(-1deg);
+                }
+                80% {
+                    transform: translate(-1px, -1px) rotate(1deg);
+                }
+                90% {
+                    transform: translate(2px, 2px) rotate(0deg);
+                }
+                100% {
+                    transform: translate(1px, -2px) rotate(-1deg);
+                }
+            }
+            .shake:hover {
+                animation-name: shake;
+                animation-duration: 0.5s;
+                transform-origin: 50% 50%;
+                animation-iteration-count: infinite;
+            }
+            .shake {
+                display: inline-block;
+            }
+            body {
+                background-image: linear-gradient(
+                    to right top,
+                    #141952,
+                    #2d1e5d,
+                    #442268,
+                    #5a2671,
+                    #712979
+                );
+                width: 100%;
+                min-height: 100vh;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="home-page" class="container d-flex-column">
+            <div
+                id="logo"
+                class="container d-flex justify-content-center align-items-center"
+                style="padding: 2rem;"
+            >
+                <img src="./Untitled-1-14.png" alt="" />
+                <h5
+                    id="title"
+                    class="title"
+                    style="color: seashell; padding: 3rem;"
+                >
+                    <i id="quotes"
+                        >By the time a bartender knows what drink a man will
+                        have before he orders, there is little else about him
+                        worth knowing.</i
+                    >
+                </h5>
+            </div>
+            <!-- <div
         id="form"
         class="d-flex-column justify-content-center rounded p-4 mx-5"
         style="background-color: rgba(245, 212, 212, 0.4);"
@@ -117,55 +129,110 @@
 
       </div> -->
 
-      <form action="" class="text-center"> 
-        <div class="input-group ">
-          <input id="form-cocktail" type="text" class="form-control" placeholder="search a cocktail" aria-label="Recipient's username" aria-describedby="basic-addon2">
-          <div class="input-group-append">
-            <button id="form-button" class="btn btn-outline-secondary" type="button" style=" color:rgba(245, 212, 212, 0.7); background-color:rgba(60, 0, 85, 1); border-color:rgba(60, 0, 85, 1);">Button</button>
-          </div>
+            <form action="" class="text-center">
+                <div class="input-group">
+                    <input
+                        id="form-cocktail"
+                        type="text"
+                        class="form-control"
+                        placeholder="search a cocktail"
+                        aria-label="Recipient's username"
+                        aria-describedby="basic-addon2"
+                    />
+                    <div class="input-group-append">
+                        <button
+                            id="form-button"
+                            class="btn btn-outline-secondary"
+                            type="button"
+                            style="
+                                color: rgba(245, 212, 212, 0.7);
+                                background-color: rgba(60, 0, 85, 1);
+                                border-color: rgba(60, 0, 85, 1);
+                            "
+                        >
+                            Button
+                        </button>
+                    </div>
+                </div>
+            </form>
+
+            <div
+                id="random-button"
+                class="d-flex justify-content-center"
+                style="padding: 2rem;"
+            >
+                <img
+                    src="./Cocktail_arrow.png"
+                    alt=""
+                    style="max-width: 110px; margin-left: -70px;"
+                    class="d-none"
+                />
+                <a href="/cocktails">
+                    <button class="btn btn-disabled shake">
+                        <img
+                            src="./Cocktail_layout.png"
+                            alt=""
+                            style="
+                                width: 100px;
+                                height: 100px;
+                                margin-left: -30px;
+                            "
+                        />
+                    </button>
+                </a>
+            </div>
         </div>
-        </form>
+        <script>
+            let quotes = [];
+            quotes.push(
+                "By the time a bartender knows what drink a man will have before he orders, there is little else about him worth knowing."
+            );
+            quotes.push(
+                "24 hours in a day. 24 beers in a case. Coincidence? I think not."
+            );
+            quotes.push(
+                "You're not drunk if you can lie on the floor without holding on."
+            );
+            quotes.push(
+                "It takes only one drink to get me drunk.....the trouble is, I can't remember if it's the thirteenth or the fourteenth."
+            );
+            quotes.push(
+                "I like to have a martini, Two at the very most. After three I'm under the table, after four I'm under my host."
+            );
+            quotes.push(
+                "An intelligent man is sometimes forced to be drunk to spend time with his fools."
+            );
+            quotes.push(
+                "All right, brain. You don't like me and I don't like you, but let's just do this and I can get back to killing you with beer."
+            );
 
+            function getRandomQuotes(quotes) {
+                // ottieni nuova serie random e salvala in randomSerie, restituisci il suo valore a fine funzione
+                const maxRange = quotes.length;
+                const randomNumber = Math.floor(Math.random() * maxRange);
+                const randomQuotes = quotes[randomNumber];
+                document.getElementById("quotes").innerText = randomQuotes;
+            }
 
-      <div
-        id="random-button"
-        class="d-flex justify-content-center"
-        style="padding: 2rem;"
-      >
-        <img
-          src="./Cocktail_arrow.png"
-          alt=""
-          style="max-width: 110px; margin-left: -70px;"
-          class="d-none"
-        />
-        <a href="/cocktails">
-          <button class="btn btn-disabled shake">
-            <img
-              src="./Cocktail_layout.png"
-              alt=""
-              style="width: 100px; height: 100px; margin-left: -30px;"
-            />
-          </button>
-        </a>
-      </div>
+            window.addEventListener("DOMContentLoaded", (event) => {
+                getRandomQuotes(quotes);
+            });
+        </script>
+        <script>
+            // utilizzo del form per acquisire un cocktail in input
+            let form_input = document.getElementById("form-cocktail");
+            let button_input = document.getElementById("form-button");
 
-    
-    </div>
-    <script>
-      // utilizzo del form per acquisire un cocktail in input
-    let form_input = document.getElementById("form-cocktail");
-    let button_input = document.getElementById("form-button");
-    button_input.addEventListener("click", () => {
-      axios
-        .get(
-          "https://www.thecocktaildb.com/api/json/v1/1/search.php?s=" +
-          form_input.value
-        )
-        .then((response) => {
-          console.log(form_input.value)
-        
-      });
-    })
-      </script>
-  </body>
+            form_input.addEventListener("keyup", function (event) {
+                if (event.keyCode === 13) {
+                    event.preventDefault();
+                    button_input.click();
+                }
+            });
+
+            button_input.addEventListener("click", () => {
+                document.location = `/cocktails?search=${form_input.value}`;
+            });
+        </script>
+    </body>
 </html>
