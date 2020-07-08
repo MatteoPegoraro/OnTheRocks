@@ -83,7 +83,7 @@
       >
         <img src="./Untitled-1-14.png" alt="" />
         <h5 id="title" class="title" style="color: seashell; padding: 3rem;">
-          <i
+          <i id="quotes"
             >By the time a bartender knows what drink a man will have before he
             orders, there is little else about him worth knowing.</i
           >
@@ -138,6 +138,42 @@
 
     
     </div>
+    <script>
+      let quotes = [];
+      quotes.push(
+        "By the time a bartender knows what drink a man will have before he orders, there is little else about him worth knowing."
+      );
+      quotes.push(
+        "24 hours in a day. 24 beers in a case. Coincidence? I think not."
+      );
+      quotes.push(
+        "You're not drunk if you can lie on the floor without holding on."
+      );
+      quotes.push(
+        "It takes only one drink to get me drunk.....the trouble is, I can't remember if it's the thirteenth or the fourteenth."
+      );
+      quotes.push(
+        "I like to have a martini, Two at the very most. After three I'm under the table, after four I'm under my host."
+      );
+      quotes.push(
+        "An intelligent man is sometimes forced to be drunk to spend time with his fools."
+      );
+      quotes.push(
+        "All right, brain. You don't like me and I don't like you, but let's just do this and I can get back to killing you with beer."
+      );
+
+      function getRandomQuotes(quotes) {
+        // ottieni nuova serie random e salvala in randomSerie, restituisci il suo valore a fine funzione
+        const maxRange = quotes.length;
+        const randomNumber = Math.floor(Math.random() * maxRange);
+        const randomQuotes = quotes[randomNumber];
+        document.getElementById("quotes").innerText = randomQuotes;
+      };
+
+      window.addEventListener("DOMContentLoaded", (event) => {
+        getRandomQuotes(quotes)
+      });
+    </script>
     <script>
       // utilizzo del form per acquisire un cocktail in input
     let form_input = document.getElementById("form-cocktail");
