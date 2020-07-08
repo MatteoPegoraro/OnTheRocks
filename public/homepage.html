@@ -13,7 +13,6 @@
       integrity="sha512-VGxuOMLdTe8EmBucQ5vYNoYDTGijqUsStF6eM7P3vA/cM1pqOwSBv/uxw94PhhJJn795NlOeKBkECQZ1gIzp6A=="
       crossorigin="anonymous"
     ></script>
-    <script src="./OnTheRocks/app.js"></script>
     <style>
       .btn:focus {
         box-shadow: none !important;
@@ -63,19 +62,21 @@
       .shake {
         display: inline-block;
       }
+      body {
+        background-image: linear-gradient(
+          to right top,
+          #141952,
+          #2d1e5d,
+          #442268,
+          #5a2671,
+          #712979
+        );
+        width: 100%;
+        min-height: 100vh;
+      }
     </style>
   </head>
-  <body
-    style="
-      background: rgb(8, 0, 85);
-      background: radial-gradient(
-        circle,
-        rgba(8, 0, 85, 1) 0%,
-        rgba(60, 0, 85, 1) 100%
-      );
-    "
-  >
-    <div id="home-page" class="container d-flex-column">
+  <!-- <div id="home-page" class="container d-flex-column">
       <div
         id="logo"
         class="container d-flex justify-content-center align-items-center"
@@ -137,7 +138,108 @@
           </button>
         </a>
       </div>
+    </div> -->
+  <body>
+    <div id="home-page" class="container d-flex-column justify-content-center h-100">
+       <div id="logo"
+        class="container d-flex justify-content-center align-items-center"
+        style="padding: 2rem;"
+      >
+        <img src="./Untitled-1-14.png" alt="" />
+        <h5 id="title" class="title" style="color: seashell; padding: 3rem;">
+          <i id="quotes"
+            >By the time a bartender knows what drink a man will have before he
+            orders, there is little else about him worth knowing.</i
+          >
+        </h5>
+      </div>
+
+      <div class="d-flex justify-content-center">
+        <form action="/cocktails" method="GET" class="text-center d-flex" style="width:500px;" >
+        <div class="input-group">
+          <input
+            id="form-cocktail"
+            type="text"
+            name="name"
+            class="form-control"
+            placeholder="search a cocktail"
+            aria-label="Recipient's username"
+            aria-describedby="basic-addon2"
+          />
+
+          <div class="input-group-append" >
+            <button
+              id="form-button"
+              class="btn btn-outline-secondary"
+              type="submit"
+              style="
+                color: rgba(245, 212, 212, 0.7);
+                background-color: rgba(60, 0, 85, 1);
+                border-color: rgba(60, 0, 85, 1);
+              "
+            >
+              GET IT!
+            </button>
+          </div>
+        </div>
+      </form>
     </div>
+
+      <div
+        id="random-button"
+        class="d-flex justify-content-center"
+        style="padding: 2rem;"
+      >
+        <img
+          src="./Cocktail_arrow.png"
+          alt=""
+          style="max-width: 110px; margin-left: -70px;"
+          class="d-none"
+        />
+        <a href="/cocktails">
+          <button class="btn btn-disabled shake justify-content-center">
+            <img
+              src="./Cocktail_layout.png"
+              alt=""
+              style="width: 100px; height: 100px; "
+            />
+          </button>
+        </a>
+      </div>
+    </div>
+    
+    <nav class="navbar fixed-bottom mt-4" style="color:white;" >
+    <div class="container justify-content-center" >
+      <a class="p-4">
+        Home
+      </a>
+      <a class="p-4">
+        About Us
+      </a>
+      <a class="p-4">
+        Contacts
+      </a>
+      <a class="p-4">
+        API
+      </a>
+</nav>
+
+<form action="/cocktails" name="searchform" >
+  <select name="search_type">
+  <option value="name" selected>Cocktail</option>
+  <option value="ingr">Ingrediente</option>
+  </select>
+  <input type="text" name="search_value">
+  <input type="submit" value="Submit">
+  </form>
+
+  <!-- <script> 
+  document.querySelector("select[name=search]").addEventListener('change', (e) => {
+    console.log(e.target.value)
+  })
+  </script>  -->
+
+
     <script>
       let quotes = [];
       quotes.push(
@@ -174,22 +276,23 @@
         getRandomQuotes(quotes);
       });
     </script>
-    <script>
+
+    <!-- script per routing del form scritto da me, migliorato attraverso la funzione action di form -->
+    <!-- <script>
       // utilizzo del form per acquisire un cocktail in input
-      let form_input = document.getElementById("form-cocktail");
-      let button_input = document.getElementById("form-button");
+      // let form_input = document.getElementById("form-cocktail");
+      // let button_input = document.getElementById("form-button");
 
-      form_input.addEventListener("keyup", function (event) {
-        if (event.keyCode === 13) {
-          event.preventDefault();
-          button_input.click();
-        }
-      });
+      // form_input.addEventListener("keyup", function (event) {
+      //   if (event.keyCode === 13) {
+      //     event.preventDefault();
+      //     button_input.click();
+      //   }
+      // });
 
-      button_input.addEventListener("click", () => {
-        document.location = `/cocktails?search=${form_input.value}`;
-      });
-      
-    </script>
+      // button_input.addEventListener("click", () => {
+      //   document.location = `/cocktails?search=${form_input.value}`;
+      // });
+    </script> -->
   </body>
 </html>

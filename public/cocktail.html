@@ -103,7 +103,7 @@
               <img
                 id="image-cocktail"
                 style="max-width: 200px; border-radius: 50%;"
-                src="https://yt3.ggpht.com/-GvSh79CS6-k/AAAAAAAAAAI/AAAAAAAAAAA/tUYENAqlnYo/s900-c-k-no-mo-rj-c0xffffff/photo.jpg"
+                src=""
                 alt=""
               />
             </div>
@@ -147,9 +147,12 @@
     </div>
     <script>
       const urlParams = new URLSearchParams(location.search);
-      const drinkName = urlParams.get("search");
+      const globalName = urlParams.get("search_value")
+      const globalType = urlParams.get("search_type")
 
-      
+      // const drinkName = urlParams.get("name");
+      // const ingrName = urlParams.get("ingr")
+
       // inizializzazione pagina iniziale (cocktail random) tramite axios e funzione utilizzata attraverso il bottone RANDOM
       function showRandomCocktail() {
         axios
@@ -196,11 +199,11 @@
           });
       }
       
-      // inizializzione pagina attraverso il form di homepage.html
-      function getCocktailfromSearch() {
+      // inizializzione pagina attraverso paramentro Nome del cocktail (attraverso il form in homepage.html)
+      function getCocktailFromSearch() {
         axios
           .get(
-            `https://www.thecocktaildb.com/api/json/v1/1/search.php?s=${drinkName}`
+            `https://www.thecocktaildb.com/api/json/v1/1/search.php?s=${globalName}`
           )
           .then((response) => {
             let drink = response.data.drinks[0];
@@ -244,11 +247,71 @@
           });
       }
       
-      if (drinkName == null){
+      // inizializzione pagina attraverso paramentro Ingrediente del cocktail (attraverso il form in homepage.html)
+      function getIngrsFromSearch() {
+        axios
+          .get(
+            `https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=${globalName}`
+          )
+          .then((response) => {
+            let drink = response.data.drinks[0];
+
+            // riempimento dati dell'html
+            document.getElementById("image-cocktail").src = drink.strDrinkThumb;
+            document.getElementById("name-cocktail").innerText = drink.strDrink;
+            document.getElementById("desc-cocktail").innerText =
+              drink.strInstructions;
+            document.getElementById("desc-cocktail").innerText =
+              drink.strInstructions;
+
+            // lista ingredienti gestita "pulendo" il json (grazie Matteo e Ale <3)
+            const arrIngr = [];
+            for (const test in drink) {
+              if (test.includes("strIngredient") && drink[test] !== null) {
+                arrIngr.push(drink[test]);
+              }
+            }
+
+            // quantità di ingredienti (UA GRAZIE CIRO)
+            const arrIngrMeasure = [];
+            for (const property in drink) {
+              if (property.includes("strMeasure") && drink[property] !== "") {
+                arrIngrMeasure.push(drink[property]);
+              }
+            }
+
+            // stampa lista ingredienti e quantità (se presenti)
+            const ingrList = document.getElementById("ingredients-carousel");
+            let listIngr = "";
+            arrIngr.forEach((ingredient, index) => {
+              const currentIngrMeasure = arrIngrMeasure[index];
+              if (currentIngrMeasure !== null) {
+                listIngr += `<li>${ingredient}: ${currentIngrMeasure}</li>`;
+              } else {
+                listIngr += `<li>${ingredient}</li>`;
+              }
+            });
+            ingrList.innerHTML = listIngr;
+          });
+    }
+
+
+      if (globalName == null){
         showRandomCocktail();
-      } else {
-        getCocktailfromSearch()
+      } else if(globalType == "ingr"){
+        getIngrsFromSearch();
+      } else if(globalType == "name") {
+        getCocktailFromSearch();
       }
+
+
+      // if (drinkName == null && ingrName == null){
+      //   showRandomCocktail();
+      // } else if(drinkName != null && ingrName == null) {
+      //   getCocktailFromSearch()
+      // } else if(drinkName == null && ingrName != null) {
+      //   getIngrsFromSearch()
+      // }
    </script>
   </body>
 </html>

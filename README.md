@@ -11,3 +11,4 @@ MISSING THINGS:
 REMINDER:
 1) spostare funzioni ausiliari su app.js - NOT USEFUL
 2) ???
+3) fare due chiamate axios per quanto riguarda gli ingredienti perché le api sono fatte male 
