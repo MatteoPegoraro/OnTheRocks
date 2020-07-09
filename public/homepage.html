@@ -7,6 +7,10 @@
         <link
             rel="stylesheet"
             href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+            href="https://fonts.googleapis.com/css2?family=Work+Sans:ital,wght@1,200;1,300;1,400;1,500&display=swap"
+            href="https://fonts.googleapis.com/css2?family=Pacifico&family=Balsamiq+Sans:ital,wght@0,400;0,700;1,400;1,700&display=swap"
+            rel="stylesheet"
+        />
         />
         <script
             src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.2/axios.js"
@@ -15,6 +19,9 @@
         ></script>
         <script src="./OnTheRocks/app.js"></script>
         <style>
+
+
+            
             .btn:focus {
                 box-shadow: none !important;
             }
@@ -64,14 +71,14 @@
                 display: inline-block;
             }
             body {
-                background-image: linear-gradient(
+                 background-image: linear-gradient(
                     to right top,
                     #141952,
                     #2d1e5d,
                     #442268,
                     #5a2671,
                     #712979
-                );
+                ); 
                 width: 100%;
                 min-height: 100vh;
             }
@@ -84,18 +91,29 @@
                 class="container d-flex justify-content-center align-items-center"
                 style="padding: 2rem;"
             >
-                <img src="./Untitled-1-14.png" alt="" />
-                <h5
+                <img src="./Untitled-1-14.png" 
+                        style="filter: drop-shadow(0 0 0.75rem  rgb(0, 0, 0, 0.65));"/>
+                <p
                     id="title"
                     class="title"
-                    style="color: seashell; padding: 3rem;"
+                    style="
+                    color: seashell; padding: 3rem;
+                    text-align: right;"
                 >
-                    <i id="quotes"
+                    <i id="quotes" 
+                        style="
+                            font-family: 'Work Sans', sans-serif;
+                            font-weight: 200;
+                            font-size: 1.2rem;
+                            
+                            "
+                    
                         >By the time a bartender knows what drink a man will
                         have before he orders, there is little else about him
                         worth knowing.</i
+                        
                     >
-                </h5>
+        </p>
             </div>
             <!-- <div
         id="form"
@@ -129,7 +147,16 @@
 
       </div> -->
 <div class="d-flex justify-content-center">
-            <form action="/cocktails" class="text-center d-flex" style="width:500px;">
+            <form action="/cocktails" class="text-center d-flex" 
+                style="
+                width:500px;
+                box-shadow:
+                        0 2.8px 2.2px rgba(0, 0, 0, 0.034),
+                        0 6.7px 5.3px rgba(0, 0, 0, 0.048),
+                        0 12.5px 10px rgba(0, 0, 0, 0.06),
+                        0 22.3px 17.9px rgba(0, 0, 0, 0.072),
+                        0 41.8px 33.4px rgba(0, 0, 0, 0.086),
+                        0 100px 80px rgba(0, 0, 0, 0.12);">
                 <div class="input-group">
                     <input
                         id="form-cocktail"
@@ -146,9 +173,9 @@
                             class="btn btn-outline-secondary"
                             type="submit"
                             style="
-                                color: rgba(245, 212, 212, 0.7);
-                                background-color: rgba(60, 0, 85, 1);
-                                border-color: rgba(60, 0, 85, 1);
+                                color: rgba(73, 73, 73, 0.7);
+                                background-color: rgb(255, 251, 0);
+                                border-color: rgb(255, 251, 0);
                             "
                         >
                             GET IT!
@@ -161,7 +188,8 @@
             <div
                 id="random-button"
                 class="d-flex justify-content-center"
-                style="padding: 2rem;"
+                style="
+                    padding: 5rem;"
             >
                 <img
                     src="./Cocktail_arrow.png"
@@ -175,16 +203,20 @@
                             src="./Cocktail_layout.png"
                             alt=""
                             style="
-                                width: 100px;
-                                height: 100px;
-                                margin-left: -30px;
+                                filter: drop-shadow(0 0 0.75rem  rgb(0, 0, 0, 0.65));
+                                width: 100px; 
+
+                                
                             "
                         />
                     </button>
                 </a>
             </div>
         </div>
-        <nav class="navbar fixed-bottom mt-4" style="color:white;" >
+        <nav class="navbar fixed-bottom mt-4" 
+        style="
+            color:white;
+            margin-bottom: -1rem" >
           <div class="container justify-content-center" >
             <a class="p-4">
               Home
@@ -203,33 +235,33 @@
         <script>
             let quotes = [];
             quotes.push(
-                "By the time a bartender knows what drink a man will have before he orders, there is little else about him worth knowing."
+                `By the time a bartender knows what drink a man will have before he orders, there is little else about him worth knowing` 
             );
             quotes.push(
-                "24 hours in a day. 24 beers in a case. Coincidence? I think not."
+                `24 hours in a day. 24 beers in a case. Coincidence? I think not`
             );
             quotes.push(
-                "You're not drunk if you can lie on the floor without holding on."
+                `You're not drunk if you can lie on the floor without holding on`
             );
             quotes.push(
-                "It takes only one drink to get me drunk.....the trouble is, I can't remember if it's the thirteenth or the fourteenth."
+                `It takes only one drink to get me drunk.....the trouble is, I can't remember if it's the thirteenth or the fourteenth`
             );
             quotes.push(
-                "I like to have a martini, Two at the very most. After three I'm under the table, after four I'm under my host."
+                `I like to have a martini, Two at the very most. After three I'm under the table, after four I'm under my host`
             );
             quotes.push(
-                "An intelligent man is sometimes forced to be drunk to spend time with his fools."
+                `An intelligent man is sometimes forced to be drunk to spend time with his fools`
             );
             quotes.push(
-                "All right, brain. You don't like me and I don't like you, but let's just do this and I can get back to killing you with beer."
-            );
+                `All right, brain. You don't like me and I don't like you, but let's just do this and I can get back to killing you with beer`
+            );        
 
             function getRandomQuotes(quotes) {
                 // ottieni nuova serie random e salvala in randomSerie, restituisci il suo valore a fine funzione
                 const maxRange = quotes.length;
                 const randomNumber = Math.floor(Math.random() * maxRange);
                 const randomQuotes = quotes[randomNumber];
-                document.getElementById("quotes").innerText = randomQuotes;
+                document.getElementById("quotes").innerText = `“`+ randomQuotes + `„`;
             }
 
             window.addEventListener("DOMContentLoaded", (event) => {
