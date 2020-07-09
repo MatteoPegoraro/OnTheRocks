@@ -78,81 +78,19 @@
     </style>
 
   </head>
-  <!-- <div id="home-page" class="container d-flex-column">
-      <div
-        id="logo"
-        class="container d-flex justify-content-center align-items-center"
-        style="padding: 2rem;"
-      >
-        <img src="./Untitled-1-14.png" alt="" />
-        <h5 id="title" class="title" style="color: seashell; padding: 3rem;">
-          <i id="quotes"
-            >By the time a bartender knows what drink a man will have before he
-            orders, there is little else about him worth knowing.</i
-          >
-        </h5>
-      </div>
-      <div
-        id="form"
-        class="d-flex-column justify-content-center rounded p-4 mx-5"
-        style="background-color: rgba(245, 212, 212, 0.4);"
-      >
-        <h6 class="text-center">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Adipisci
-          animi in vitae esse officia, accusamus quam, perferendis reiciendis
-          earum debitis blanditiis, provident est fugit obcaecati odit illum
-          suscipit quibusdam assumenda.
-        </h6>
-        <form>
-          <div class="text-center pt-4">
-            <label for="cocktail"></label>
-            <input
-              style="width: 300px;"
-              id="form-cocktail"
-              name="cocktail"
-              type="text"
-              placeholder="search a cocktail"
-              autofocus
-            />
-            <button id="form-button" type="button" class="btn btn-warning">
-              search
-            </button>
-          </div>
-        </form>
-      </div>
-      <div
-        id="random-button"
-        class="d-flex justify-content-center"
-        style="padding: 2rem;"
-      >
-        <img
-          src="./Cocktail_arrow.png"
-          alt=""
-          style="max-width: 110px; margin-left: -70px;"
-        />
-        <a href="/cocktails">
-          <button class="btn btn-disabled shake">
-            <img
-              src="./Cocktail_layout.png"
-              alt=""
-              style="width: 100px; height: 100px; margin-left: -30px;"
-            />
-          </button>
-        </a>
-      </div>
-    </div> -->
   <body>
     <!-- Homepage -->
     <div
       id="home-page"
       class="container d-flex-column justify-content-center h-100"
     >
+    <!-- Logo -->
       <div
         id="logo"
         class="container d-flex justify-content-center align-items-center"
         style="padding: 2rem;"
-      >
-        <img src="./assets/Untitled-1-14.png" alt="" />
+      ><a href="/home">
+        <img src="./assets/Untitled-1-14.png" alt="" /></a> 
         <h5 id="title" class="title" style="color: seashell; padding: 3rem;">
           <i id="quotes"
             >By the time a bartender knows what drink a man will have before he
@@ -208,6 +146,7 @@
             <input
               id="form-cocktail"
               type="text"
+              autocomplete="off"
               name="search_value"
               class="form-control"
               placeholder="search a cocktail"
@@ -277,6 +216,7 @@
 
     <script>
       window.addEventListener("DOMContentLoaded", (event) => {
+
         getRandomQuotes(quotes);
       });
     </script>
