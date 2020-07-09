@@ -57,16 +57,96 @@ function getIngrsFromSearch(ingr) {
     .get(`https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=${ingr}`)
     .then((response) => {
       let drink = response.data.drinks;
-      const maxRange = drink.length;
-      const randomNumber = Math.floor(Math.random() * maxRange);
-      const randomDrink = response.data.drinks[randomNumber];
+      for (i = 0; i < 5; i++) {
+        const maxRange = drink.length;
+        const randomNumber = Math.floor(Math.random() * maxRange);
+        const randomDrink = response.data.drinks[randomNumber];
 
-      let nameCocktail = randomDrink.strDrink;
-      axios
-        .get(
-          `https://www.thecocktaildb.com/api/json/v1/1/search.php?s=${nameCocktail}`
-        )
-        .then((response) => fillHTML(response));
+        let nameCocktail = randomDrink.strDrink;
+
+        axios
+          .get(
+            `https://www.thecocktaildb.com/api/json/v1/1/search.php?s=${nameCocktail}`
+          )
+          .then((response) => {
+            console.log(response.data);
+
+            let drink = response.data.drinks[0]
+
+            const arrIngr = [];
+            for (const test in drink) {
+              if (test.includes("strIngredient") && drink[test] !== null) {
+                arrIngr.push(drink[test]);
+              }
+            }
+
+            // quantità di ingredienti (UA GRAZIE CIRO)
+            const arrIngrMeasure = [];
+            for (const property in drink) {
+              if (property.includes("strMeasure") && drink[property] !== "") {
+                arrIngrMeasure.push(drink[property]);
+              }
+            }
+
+            // stampa lista ingredienti e quantità (se presenti)
+            
+            let listIngr = "";
+            arrIngr.forEach((ingredient, index) => {
+              const currentIngrMeasure = arrIngrMeasure[index];
+              if (currentIngrMeasure !== null) {
+                listIngr += `<li>${ingredient}: ${currentIngrMeasure}</li>`;
+              } else {
+                listIngr += `<li>${ingredient}</li>`;
+              }
+            });
+
+            console.log(listIngr);
+
+            document.getElementById(
+              "cocktail-main-container"
+            ).innerHTML += `<div
+          id="cocktail-div"
+          class="d-flex-column justify-content-center rounded mt-3"
+          style="background-color: rgba(245, 212, 212, 0.7); padding: 0.5rem;"
+          >
+          <div class="loading d-none" style="width:100%; height:100%;">
+          <img src="./assets/Dual Ball-1s-183px.gif">
+          </div>
+          
+          <div class="d-flex justify-content-evenly" style="padding: 1.5rem;">
+            <div style="max-width: 300px;">
+              <img
+                id="image-cocktail"
+                style="max-width: 200px; border-radius: 50%;"
+                src="${response.data.drinks[0].strDrinkThumb}"
+                alt=""
+              />
+            </div>
+            <div
+              class="d-flex-column justify-content-center px-4"
+              style="flex-grow: 2;"
+            >
+              <h3 id="name-cocktail" class="text-start">
+                ${response.data.drinks[0].strDrink}
+              </h3>
+              <div class="d-flex">
+                <p id="desc-cocktail" style="overscroll-behavior-y: content;">
+                ${response.data.drinks[0].strInstructions}
+                </p>
+              </div>
+            </div>
+            <div id="ingredients-carousel" class="d-flex-row">
+            ${listIngr} 
+          
+            </div>
+            
+          </div>
+          </div>
+          </div>`;
+
+            //fillHTML(response)
+          });
+      }
     });
 }
 
