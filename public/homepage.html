@@ -13,6 +13,7 @@
       integrity="sha512-VGxuOMLdTe8EmBucQ5vYNoYDTGijqUsStF6eM7P3vA/cM1pqOwSBv/uxw94PhhJJn795NlOeKBkECQZ1gIzp6A=="
       crossorigin="anonymous"
     ></script>
+    <script src="funcs.js"></script>
     <style>
       .btn:focus {
         box-shadow: none !important;
@@ -75,6 +76,7 @@
         min-height: 100vh;
       }
     </style>
+
   </head>
   <!-- <div id="home-page" class="container d-flex-column">
       <div
@@ -140,12 +142,17 @@
       </div>
     </div> -->
   <body>
-    <div id="home-page" class="container d-flex-column justify-content-center h-100">
-       <div id="logo"
+    <!-- Homepage -->
+    <div
+      id="home-page"
+      class="container d-flex-column justify-content-center h-100"
+    >
+      <div
+        id="logo"
         class="container d-flex justify-content-center align-items-center"
         style="padding: 2rem;"
       >
-        <img src="./Untitled-1-14.png" alt="" />
+        <img src="./assets/Untitled-1-14.png" alt="" />
         <h5 id="title" class="title" style="color: seashell; padding: 3rem;">
           <i id="quotes"
             >By the time a bartender knows what drink a man will have before he
@@ -154,7 +161,8 @@
         </h5>
       </div>
 
-      <div class="d-flex justify-content-center">
+      <!-- Primo test di form -->
+      <!-- <div class="d-flex justify-content-center">
         <form action="/cocktails" method="GET" class="text-center d-flex" style="width:500px;" >
         <div class="input-group">
           <input
@@ -183,7 +191,48 @@
           </div>
         </div>
       </form>
-    </div>
+    </div> -->
+
+      <!-- Secondo test di form, con scelta multipla-->
+      <div class="d-flex justify-content-center">
+        <form
+          action="/cocktails"
+          class="text-center d-flex"
+          style="width: 500px;"
+        >
+          <div class="input-group">
+            <select name="search_type">
+              <option value="name" selected>Cocktail</option>
+              <option value="ingr">Ingrediente</option>
+            </select>
+            <input
+              id="form-cocktail"
+              type="text"
+              name="search_value"
+              class="form-control"
+              placeholder="search a cocktail"
+              aria-label="Recipient's username"
+              aria-describedby="basic-addon2"
+            />
+
+            <div class="input-group-append">
+              <button
+                id="form-button"
+                class="btn btn-outline-secondary"
+                type="submit"
+                value="Submit"
+                style="
+                  color: rgba(245, 212, 212, 0.7);
+                  background-color: rgba(60, 0, 85, 1);
+                  border-color: rgba(60, 0, 85, 1);
+                "
+              >
+                GET IT!
+              </button>
+            </div>
+          </div>
+        </form>
+      </div>
 
       <div
         id="random-button"
@@ -191,7 +240,7 @@
         style="padding: 2rem;"
       >
         <img
-          src="./Cocktail_arrow.png"
+          src="./assets/Cocktail_arrow.png"
           alt=""
           style="max-width: 110px; margin-left: -70px;"
           class="d-none"
@@ -199,79 +248,34 @@
         <a href="/cocktails">
           <button class="btn btn-disabled shake justify-content-center">
             <img
-              src="./Cocktail_layout.png"
+              src="./assets/Cocktail_layout.png"
               alt=""
-              style="width: 100px; height: 100px; "
+              style="width: 100px; height: 100px;"
             />
           </button>
         </a>
       </div>
     </div>
-    
-    <nav class="navbar fixed-bottom mt-4" style="color:white;" >
-    <div class="container justify-content-center" >
-      <a class="p-4">
-        Home
-      </a>
-      <a class="p-4">
-        About Us
-      </a>
-      <a class="p-4">
-        Contacts
-      </a>
-      <a class="p-4">
-        API
-      </a>
-</nav>
 
-<form action="/cocktails" name="searchform" >
-  <select name="search_type">
-  <option value="name" selected>Cocktail</option>
-  <option value="ingr">Ingrediente</option>
-  </select>
-  <input type="text" name="search_value">
-  <input type="submit" value="Submit">
-  </form>
-
-  <!-- <script> 
-  document.querySelector("select[name=search]").addEventListener('change', (e) => {
-    console.log(e.target.value)
-  })
-  </script>  -->
-
+    <!-- Footer -->
+    <nav class="navbar fixed-bottom mt-4" style="color: white;">
+      <div class="container justify-content-center">
+        <a href="/home" class="p-4">
+          Home
+        </a>
+        <a href="/404" class="p-4">
+          About Us
+        </a>
+        <a href="/404" class="p-4">
+          Contacts
+        </a>
+        <a href="https://www.thecocktaildb.com/api.php" class="p-4">
+          API
+        </a>
+      </div>
+    </nav>
 
     <script>
-      let quotes = [];
-      quotes.push(
-        "By the time a bartender knows what drink a man will have before he orders, there is little else about him worth knowing."
-      );
-      quotes.push(
-        "24 hours in a day. 24 beers in a case. Coincidence? I think not."
-      );
-      quotes.push(
-        "You're not drunk if you can lie on the floor without holding on."
-      );
-      quotes.push(
-        "It takes only one drink to get me drunk.....the trouble is, I can't remember if it's the thirteenth or the fourteenth."
-      );
-      quotes.push(
-        "I like to have a martini, Two at the very most. After three I'm under the table, after four I'm under my host."
-      );
-      quotes.push(
-        "An intelligent man is sometimes forced to be drunk to spend time with his fools."
-      );
-      quotes.push(
-        "All right, brain. You don't like me and I don't like you, but let's just do this and I can get back to killing you with beer."
-      );
-
-      function getRandomQuotes(quotes) {
-        // ottieni nuova serie random e salvala in randomSerie, restituisci il suo valore a fine funzione
-        const maxRange = quotes.length;
-        const randomNumber = Math.floor(Math.random() * maxRange);
-        const randomQuotes = quotes[randomNumber];
-        document.getElementById("quotes").innerText = randomQuotes;
-      }
-
       window.addEventListener("DOMContentLoaded", (event) => {
         getRandomQuotes(quotes);
       });
