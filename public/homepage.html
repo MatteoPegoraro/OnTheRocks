@@ -76,6 +76,26 @@
         width: 100%;
         min-height: 100vh;
       }
+      
+      
+      /* .pulse {
+        filter: drop-shadow(0 0 0 rgba(204,169,44, 0.8));
+  animation: pulse 2s infinite;
+      }
+      
+      
+      @-webkit-keyframes pulse {
+  0% {
+    -webkit-filter-shadow: 0 0 0 0 rgba(204,169,44, 0.4);
+  }
+  70% {
+      -webkit-filter-shadow: 0 0 0 10px rgba(204,169,44, 0);
+  }
+  100% {
+      -webkit-filter-shadow: 0 0 0 0 rgba(204,169,44, 0);
+  }
+} */
+
     </style>
 <link
 href="https://fonts.googleapis.com/css2?family=Work+Sans:ital,wght@1,200;1,300;1,400;1,500&display=swap"
@@ -190,21 +210,22 @@ rel="stylesheet"
       <div
         id="random-button"
         class="d-flex justify-content-center"
-        style="padding: 7rem;"
+        style="padding: 5rem;"
       >
-        <img
+        <img id="arrow"
           src="./assets/Cocktail_arrow.png"
           alt=""
-          style="max-width: 110px; margin-left: -70px;"
+          style="max-width: 110px; margin-left: -95px;"
           class="d-none"
         />
         <a href="/cocktails">
-          <button class="btn btn-disabled shake">
+          <button class="btn btn-disabled shake pulse">
             <img
               src="./assets/Cocktail_layout.png"
               alt=""
-              style=" filter: drop-shadow(0 0 0.75rem  rgb(0, 0, 0, 0.65));
-              width: 100px;"
+              style="filter: drop-shadow(0 0 0.75rem  rgb(0, 0, 0, 0.65));
+              width: 100px; margin-left: -20px;"
+              
             />
           </button>
         </a>
@@ -234,6 +255,14 @@ rel="stylesheet"
 
         getRandomQuotes(quotes);
       });
+      
+      function showArrow(){
+        const arrow = document.getElementById("arrow")
+        arrow.className -= "d-none"
+      }
+      setTimeout(showArrow, 5000)
+
+
     </script>
 
     <!-- script per routing del form scritto da me, migliorato attraverso la funzione action di form -->
