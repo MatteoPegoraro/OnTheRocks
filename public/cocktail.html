@@ -15,15 +15,6 @@
       href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
     />
     <style>
-      body {
-        background: rgb(8, 0, 85);
-        background: radial-gradient(
-          circle,
-          rgba(8, 0, 85, 1) 0%,
-          rgba(60, 0, 85, 1) 100%
-        );
-      }
-
       .btn:focus {
         box-shadow: none !important;
       }
@@ -76,7 +67,34 @@
       .shake {
         display: inline-block;
       }
+      body {
+                background-image: linear-gradient(
+                    to right top,
+                    #141952,
+                    #2d1e5d,
+                    #442268,
+                    #5a2671,
+                    #712979
+                );
+                width: 100%;
+                min-height: 100vh;
+            }
+            #desc-cocktail, #ingredients-carousel {
+                overflow-y: scroll;
+            }
+            #desc-cocktail::-webkit-scrollbar, #ingredients-carousel::-webkit-scrollbar {
+                width: 10px;
+            }
+
+            #desc-cocktail::-webkit-scrollbar-thumb, #ingredients-carousel::-webkit-scrollbar-thumb {
+                background: rgb(96, 25, 133);
+                border-radius: 10px;
+            }
     </style>
+     <link
+     href="https://fonts.googleapis.com/css2?family=Pacifico&family=Balsamiq+Sans:ital,wght@0,400;0,700;1,400;1,700&display=swap"
+     rel="stylesheet"
+ />
   </head>
 
   <body>
@@ -92,11 +110,12 @@
           ><img
             src="./assets/Untitled-1-14.png"
             alt=""
-            style="max-width: 150px;"
+            style="max-width: 150px;
+             filter: drop-shadow(0 0 0.75rem  rgb(0, 0, 0, 0.65));"
         /></a>
-        <h5 id="title" class="title" style="color: seashell; padding: 3rem;">
+        <!-- <h5 id="title" class="title" style="color: seashell; padding: 3rem;">
           <i></i>
-        </h5>
+        </h5> -->
       </div>
       <!-- Cocktail card -->
       <div id="cocktail-main-container" class="container d-flex-columm" >
@@ -114,13 +133,14 @@
         <img
           src="./assets/Cocktail_layout.png"
           alt=""
-          style="width: 100px; height: 100px; margin-right: -20px;"
+          style="width: 100px; height: 100px; margin-right: -20px;
+           filter: drop-shadow(0 0 0.75rem  rgb(0, 0, 0, 0.65));"
         />
       </button>
       <img
         src="./assets/Cocktail_layout_1.png"
         alt=""
-        style="max-width: 110px; margin-right: -70px;"
+        style="max-width: 110px; margin-right: -95px;"
       />
     </div>
 
