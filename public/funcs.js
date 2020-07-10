@@ -306,7 +306,10 @@ function fillHTMLRandom(response) {
 function showRandomCocktail() {
   axios
     .get(`https://www.thecocktaildb.com/api/json/v1/1/random.php`)
-    .then((response) => fillHTMLRandom(response));
+    .then((response) => {
+      fillHTMLRandom(response)
+
+    });
 }
 
 // inizializzione pagina attraverso paramentro Nome del cocktail (attraverso il form in homepage.html)

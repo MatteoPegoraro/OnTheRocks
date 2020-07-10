@@ -68,21 +68,22 @@
         display: inline-block;
       }
       body {
-                background-image: linear-gradient(
-                    to right top,
-                    #141952,
-                    #2d1e5d,
-                    #442268,
-                    #5a2671,
-                    #712979
-                );
-                width: 100%;
-                min-height: 100vh;
-            }
-            #desc-cocktail, #ingredients-carousel {
-                overflow-y: scroll;
-            }
-            /* #desc-cocktail::-webkit-scrollbar, #ingredients-carousel::-webkit-scrollbar {
+        background-image: linear-gradient(
+          to right top,
+          #141952,
+          #2d1e5d,
+          #442268,
+          #5a2671,
+          #712979
+        );
+        width: 100%;
+        min-height: 100vh;
+      }
+      #desc-cocktail,
+      #ingredients-carousel {
+        overflow-y: scroll;
+      }
+      /* #desc-cocktail::-webkit-scrollbar, #ingredients-carousel::-webkit-scrollbar {
                 width: 10px;
             }
 
@@ -90,19 +91,21 @@
                 background: rgb(96, 25, 133);
                 border-radius: 10px; */
 
-              #desc-cocktail::-moz-scrollbar, #ingredients-carousel::-moz-scrollbar {
-                width: 10px;
-            }
+      #desc-cocktail::-moz-scrollbar,
+      #ingredients-carousel::-moz-scrollbar {
+        width: 10px;
+      }
 
-            #desc-cocktail::-moz-scrollbar-thumb, #ingredients-carousel::-moz-scrollbar-thumb {
-                background: rgb(96, 25, 133);
-                border-radius: 10px; 
-            }
+      #desc-cocktail::-moz-scrollbar-thumb,
+      #ingredients-carousel::-moz-scrollbar-thumb {
+        background: rgb(96, 25, 133);
+        border-radius: 10px;
+      }
     </style>
-     <link
-     href="https://fonts.googleapis.com/css2?family=Pacifico&family=Balsamiq+Sans:ital,wght@0,400;0,700;1,400;1,700&display=swap"
-     rel="stylesheet"
- />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Pacifico&family=Balsamiq+Sans:ital,wght@0,400;0,700;1,400;1,700&display=swap"
+      rel="stylesheet"
+    />
   </head>
 
   <body>
@@ -118,38 +121,61 @@
           ><img
             src="./assets/Untitled-1-14.png"
             alt=""
-            style="max-width: 150px;
-             filter: drop-shadow(0 0 0.75rem  rgb(0, 0, 0, 0.65));"
+            style="
+              max-width: 150px;
+              filter: drop-shadow(0 0 0.75rem rgb(0, 0, 0, 0.65));
+            "
         /></a>
         <!-- <h5 id="title" class="title" style="color: seashell; padding: 3rem;">
           <i></i>
         </h5> -->
       </div>
       <!-- Cocktail card -->
-      <div id="cocktail-main-container" class="container d-flex-columm" >
-        
-      
-  </div>
+      <div id="cocktail-main-container" class="container d-flex-columm"></div>
 
-    <!-- Button with "random" function -->
-    <div
-      id="random-button"
-      class="d-flex justify-content-center"
-      style="padding: 2rem;"
-    >
-      <button class="btn btn-disabled shake" onclick="showRandomCocktail()">
+      <!-- Button with "random" function -->
+      <div
+        id="random-button"
+        class="d-flex justify-content-center"
+        style="padding: 2rem;"
+      >
+        <button class="btn btn-disabled shake" onclick="showRandomCocktail()">
+          <img
+            src="./assets/Cocktail_layout.png"
+            alt=""
+            style="
+              width: 100px;
+              margin-right: -20px;
+              filter: drop-shadow(0 0 0.75rem rgb(0, 0, 0, 0.65));
+            "
+          />
+        </button>
         <img
-          src="./assets/Cocktail_layout.png"
+          src="./assets/Cocktail_layout_1.png"
           alt=""
-          style="width: 100px; margin-right: -20px;
-           filter: drop-shadow(0 0 0.75rem  rgb(0, 0, 0, 0.65));"
+          style="max-width: 110px; margin-right: -95px;"
         />
-      </button>
-      <img
-        src="./assets/Cocktail_layout_1.png"
-        alt=""
-        style="max-width: 110px; margin-right: -95px;"
-      />
+      </div>
+      <!-- Footer -->
+      <nav
+        class="navbar fixed-bottom mt-4"
+        style="color: white; margin-bottom: -1rem;"
+      >
+        <div class="container justify-content-center">
+          <a href="/home" class="p-4">
+            Home
+          </a>
+          <a href="/404" class="p-4">
+            About Us
+          </a>
+          <a href="/404" class="p-4">
+            Contacts
+          </a>
+          <a href="https://www.thecocktaildb.com/api.php" class="p-4">
+            API
+          </a>
+        </div>
+      </nav>
     </div>
 
     <script>
@@ -157,8 +183,6 @@
       const urlParams = new URLSearchParams(location.search);
       const globalName = urlParams.get("search_value");
       const globalType = urlParams.get("search_type");
-
-
 
       // filtering searches
       if (globalName == null) {
