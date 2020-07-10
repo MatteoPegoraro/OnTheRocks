@@ -1,40 +1,153 @@
 // // filling the page
 function fillHTML(response) {
-  let drink = response.data.drinks[0];
+  let drink = response.data.drinks[i];
+
+   // lista ingredienti gestita "pulendo" il json (grazie Matteo e Ale <3)
+   const arrIngr = [];
+   for (const test in drink) {
+     if (test.includes("strIngredient") && drink[test] !== null) {
+       arrIngr.push(drink[test]);
+     }
+   }
+ 
+   // quantità di ingredienti (UA GRAZIE CIRO)
+   const arrIngrMeasure = [];
+   for (const property in drink) {
+     if (property.includes("strMeasure") && drink[property] !== "") {
+       arrIngrMeasure.push(drink[property]);
+     }
+   }
+ 
+   // stampa lista ingredienti e quantità (se presenti)
+ 
+   
+ 
+   let listIngr = "";
+   arrIngr.forEach((ingredient, index) => {
+     const currentIngrMeasure = arrIngrMeasure[index];
+     if (currentIngrMeasure !== null) {
+       listIngr += `<li>${ingredient}: ${currentIngrMeasure}</li>`;
+     } else {
+       listIngr += `<li>${ingredient}</li>`;
+     }
+   });
 
   // riempimento dati dell'html
-  document.getElementById("image-cocktail").src = drink.strDrinkThumb;
-  document.getElementById("name-cocktail").innerText = drink.strDrink;
-  document.getElementById("desc-cocktail").innerText = drink.strInstructions;
+ 
 
-  // lista ingredienti gestita "pulendo" il json (grazie Matteo e Ale <3)
-  const arrIngr = [];
-  for (const test in drink) {
-    if (test.includes("strIngredient") && drink[test] !== null) {
-      arrIngr.push(drink[test]);
-    }
-  }
+  document.getElementById("cocktail-main-container").innerHTML += `<div
+  id="cocktail-div"
+  class="d-flex-column justify-content-center rounded mt-3"
+  style="
+      background-color: rgba(245, 212, 212, 0.7);
+      padding: 0.5rem;
+      box-shadow:
+      0 2.8px 2.2px rgba(0, 0, 0, 0.034),
+      0 6.7px 5.3px rgba(0, 0, 0, 0.048),
+      0 12.5px 10px rgba(0, 0, 0, 0.06),
+      0 22.3px 17.9px rgba(0, 0, 0, 0.072),
+      0 41.8px 33.4px rgba(0, 0, 0, 0.086),
+      0 100px 80px rgba(0, 0, 0, 0.12);"
 
-  // quantità di ingredienti (UA GRAZIE CIRO)
-  const arrIngrMeasure = [];
-  for (const property in drink) {
-    if (property.includes("strMeasure") && drink[property] !== "") {
-      arrIngrMeasure.push(drink[property]);
-    }
-  }
+  
+>
+  <div
+      class="d-flex justify-content-evenly"
+      style="padding: 1.5rem; height: 350px;"
+  >
+      <div class="d-flex align-items-center" 
+          style="max-width: 300px; padding-right: 0.4rem; ">
+          <img
+              id="image-cocktail"
+              style="
+                  max-width: 270px; 
+                  border-radius: 50%;
+                  box-shadow:
+                      0 2.8px 2.2px rgba(0, 0, 0, 0.034),
+                      0 6.7px 5.3px rgba(0, 0, 0, 0.048),
+                      0 12.5px 10px rgba(0, 0, 0, 0.06),
+                      0 22.3px 17.9px rgba(0, 0, 0, 0.072),
+                      0 41.8px 33.4px rgba(0, 0, 0, 0.086),
+                      0 100px 80px rgba(0, 0, 0, 0.12);"
+              src="${drink.strDrinkThumb}"
+              alt=""
+              
+          />
+      </div>
 
-  // stampa lista ingredienti e quantità (se presenti)
-  const ingrList = document.getElementById("ingredients-carousel");
-  let listIngr = "";
-  arrIngr.forEach((ingredient, index) => {
-    const currentIngrMeasure = arrIngrMeasure[index];
-    if (currentIngrMeasure !== null) {
-      listIngr += `<li>${ingredient}: ${currentIngrMeasure}</li>`;
-    } else {
-      listIngr += `<li>${ingredient}</li>`;
-    }
-  });
-  ingrList.innerHTML = listIngr;
+      <div
+          class="d-flex-column justify-content-center px-4"
+          style="flex-grow: 2; max-width: 800px;"
+      >
+          <h2
+              id="name-cocktail"
+              class="text-start"
+              style="
+                  font-family: 'Pacifico', cursive;
+                  background: linear-gradient(
+                      90deg,
+                      rgba(212, 47, 75, 1) 0%,
+                      rgba(81, 0, 85, 1) 100%
+                  );
+                  -webkit-background-clip: text;
+                  -webkit-text-fill-color: transparent;
+                  line-height: 2;
+              "
+          >
+              ${drink.strDrink}
+          </h2>
+          <div
+              id="desc-cocktail"
+              class="d-flex"
+              style="
+                  max-height: 72%;
+                  font-family: 'Balsamiq Sans', cursive;
+                  font-weight: 400;
+                  color: white;
+              "
+          >
+              ${drink.strInstructions}
+          </div>
+      </div>
+      <div
+          class="d-flex-column pt-2 border-left"
+          style="padding-left: 0.05rem;"
+      >
+          <h3
+              class="text-light"
+              style="
+                  font-family: 'Pacifico', cursive;
+                  background: linear-gradient(
+                      90deg,
+                      rgba(212, 47, 75, 1) 0%,
+                      rgba(81, 0, 85, 1) 100%
+                  );
+                  -webkit-background-clip: text;
+                  -webkit-text-fill-color: transparent;
+                  line-height: 2;
+                  margin-top: -0.3rem;
+                  margin-left: 2.4rem;
+              "
+          >
+              Ingredients
+          </h3>
+          <div
+              id="ingredients-carousel"
+              class="d-flex-row pt-1"
+              style="
+                  font-family: 'Balsamiq Sans', cursive;
+                  font-weight: 400;
+                  max-height: 72%;
+                  color: white;
+                  list-style: none;
+                  margin-left: 2.5rem;
+              "
+          >${listIngr}</div>
+      </div>
+  </div>
+</div>`;
+  
+ 
 }
 
 // inizializzazione pagina iniziale (cocktail random) tramite axios e funzione utilizzata attraverso il bottone RANDOM
@@ -48,7 +161,10 @@ function showRandomCocktail() {
 function getCocktailFromSearch(name) {
   axios
     .get(`https://www.thecocktaildb.com/api/json/v1/1/search.php?s=${name}`)
-    .then((response) => fillHTML(response));
+    .then((response) => {
+      for( i = 0; response.data.drinks[i] != null; i++){
+      fillHTML(response)}
+    })
 }
 
 // inizializzione pagina attraverso paramentro Ingrediente del cocktail (attraverso il form in homepage.html)
